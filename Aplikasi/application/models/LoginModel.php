@@ -22,4 +22,24 @@ class LoginModel extends CI_Model {
         $enum = explode("','", $matches[1]);
         return $enum;
     }
+
+    public function register($data) {
+        $query = $this->db->insert('user', $data);
+		return $query;
+    }
+
+    function get_kode(){
+        $q = $this->db->query("SELECT MAX(RIGHT(id_user,4)) AS kd_max FROM user WHERE DATE(create_time)=CURDATE()");
+        $kd = "";
+        if ($q->num_rows() > 0) {
+            foreach ($q->result() as $k) {
+                $tmp = ((int)$k->kd_max) + 1;
+                $kd = sprintf("%04s", $tmp);
+            }
+        } else {
+            $kd = "0001";
+        }
+        date_default_timezone_set('Asia/Jakarta');
+        return date('dmY') . $kd;
+    }
 }

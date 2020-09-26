@@ -28,13 +28,13 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="<?= base_url(); ?>index.php/main/register_process" method="POST" enctype="multipart/form-data">
+				<form class="login100-form validate-form" id="register-form" method="POST" enctype="multipart/form-data">
 					<span class="login100-form-title p-b-43">
 						Create your acconut
 					</span>
                     <div class="form-group">
                         <label>Full Name :</label>
-                        <input type="email" name="fullname" class="form-control">
+                        <input type="text" name="fullname" class="form-control">
                     </div>
                     <div class="form-group">
                         <label>Gender :</label>
@@ -58,9 +58,7 @@
                         <input type="password" name="password2" class="form-control">
                     </div>
                     <div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							Register Now
-						</button>
+						<button class="login100-form-btn" type="submit">Register Now</button>
 					</div>
 				</form>
 				<div class="login100-more" style="background-image: url('http://192.168.64.2/poslogvendor/Aplikasi/assets/public/images/national-transport.jpg');">
@@ -87,7 +85,31 @@
 <!--===============================================================================================-->
 	<script src="<?= base_url() ?>assets/public/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="<?= base_url() ?>assets/public/js/main.js"></script>
+    <script src="<?= base_url() ?>assets/public/js/main.js"></script>
+<!--===============================================================================================-->
+    <script type="text/javascript">
+        $(document).on('submit', '#register-form', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/Main/register_process') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        location.reload();
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+    
 
 </body>
 </html>

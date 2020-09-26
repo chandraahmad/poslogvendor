@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="<?= base_url() ?>assets/public/images/icons/favicon.ico"/>
+	<link rel="icon" href="<?= base_url() ?>assets/public/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/public/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -28,7 +28,7 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" id="register-form" method="POST" enctype="multipart/form-data">
+			<form class="login100-form validate-form" id="register-form" method="POST" enctype="multipart/form-data">
 					<span class="login100-form-title p-b-43">
 						Create your acconut
 					</span>
@@ -61,7 +61,7 @@
 						<button class="login100-form-btn" type="submit">Register Now</button>
 					</div>
 				</form>
-				<div class="login100-more" style="background-image: url('http://192.168.64.2/poslogvendor/Aplikasi/assets/public/images/national-transport.jpg');">
+				<div class="login100-more" style="background-image: url('<?= base_url() ?>assets/public/images/national-transport.jpg');">
 				</div>
 			</div>
 		</div>
@@ -85,9 +85,8 @@
 <!--===============================================================================================-->
 	<script src="<?= base_url() ?>assets/public/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-    <script src="<?= base_url() ?>assets/public/js/main.js"></script>
-<!--===============================================================================================-->
-    <script type="text/javascript">
+	<script src="<?= base_url() ?>assets/public/js/main.js"></script>
+	<script type="text/javascript">
         $(document).on('submit', '#register-form', function(a){
             var formData = new FormData($(this)[0]);
             $.ajax({
@@ -100,7 +99,7 @@
                 var out = jQuery.parseJSON(data);
                 if (out.status == true) {
                     if(window.confirm(out.message)) {
-                        location.reload();
+                        window.location.replace("<?= base_url('index.php/Main/login') ?>");
                     }
                 } else {
                     window.confirm(out.message);
@@ -109,7 +108,6 @@
             a.preventDefault();
         });
     </script>
-    
 
 </body>
 </html>

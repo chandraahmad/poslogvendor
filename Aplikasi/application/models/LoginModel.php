@@ -13,7 +13,7 @@ class LoginModel extends CI_Model {
                 ->where('email', $data['email'])
                 ->where('password', $data['password'])
                 ->get();
-		return $query->result();
+		return $query;
     }
 
     public function GetAllGender() {

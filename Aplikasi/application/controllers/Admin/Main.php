@@ -18,6 +18,16 @@ class Main extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+    function __construct(){
+		parent::__construct();		
+		$this->load->model('user_model');
+
+        if ($this->session->userdata('level') == 1) {
+			
+		} else {
+			redirect(base_url("index.php/main/logout"));
+		}
+	}
 	public function index()
 	{
 		$data['view'] = 'admin/dashboard';

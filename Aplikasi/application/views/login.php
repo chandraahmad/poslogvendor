@@ -70,7 +70,7 @@
 						</span>
 					</div>
 				</form>
-				<div class="login100-more" style="background-image: url('http://192.168.64.2/poslogvendor/Aplikasi/assets/public/images/national-transport.jpg');">
+				<div class="login100-more" style="background-image: url('<?= base_url() ?>assets/public/images/national-transport.jpg');">
 				</div>
 			</div>
 		</div>

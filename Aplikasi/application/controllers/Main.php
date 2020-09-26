@@ -30,9 +30,31 @@ class Main extends CI_Controller {
 			);
 
 			$result = $this->LoginModel->login($data);
-			if(count($result) > 0) {
-				$this->session->set_userdata($result);
-				redirect('Admin/main');
+			if(count($result->result()) > 0) { 
+				$arr = $result->row_array(); 
+				if($arr['level_id'] == 1) {
+					$data_session = array(
+						'id_user' => $arr['id_user'],
+						'nama' => $arr['fullname'],
+						'level' => $arr['level_id'],
+						'email' => $arr['email'],
+						'status' => True
+						);
+						
+					$this->session->set_userdata($data_session);
+					redirect(base_url("index.php/Admin/main"));
+				} else {
+					$data_session = array(
+						'id_user' => $arr['id_user'],
+						'nama' => $arr['fullname'],
+						'level' => $arr['level_id'],
+						'email' => $arr['email'],
+						'status' => True
+						);
+
+					$this->session->set_userdata($data_session);
+					redirect(base_url("index.php/User/main"));
+				}
 			}else{
 				redirect('main/login');
 			}
@@ -92,5 +114,10 @@ class Main extends CI_Controller {
 			);
 		}
 		echo json_encode($output);
+	}
+
+	function logout(){
+		$this->session->sess_destroy();
+		redirect(base_url('index.php/main/login'));
 	}
 }

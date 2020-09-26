@@ -31,14 +31,14 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Administrasi Vendor</a>
+            <a class="collapse-item" href="<?php echo base_url('index.php/user/main/administrasi'); ?>">Administrasi Vendor</a>
             <a class="collapse-item" href="#">Dokumen</a>
             <a class="collapse-item" href="#">Aset</a>
           </div>
         </div>
       </li>
       <!-- Sidebar Toggler (Sidebar) -->
-      
+
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
       </div>

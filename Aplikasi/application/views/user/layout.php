@@ -123,6 +123,687 @@
     minViewMode: "years"
     });
   </script>
+  <script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+  </script>
+
+  <!-- AJAX AKTA -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-akta', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_akta') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX KEMENKUMHAM -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-kemenkumham', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_kemenkumham') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX SIUP -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-siup', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_siup') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX TDP -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-tdp', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_tdp') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX NPWP -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-npwp', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_npwp') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX SPPKP -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-sppkp', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_sppkp') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX SITU -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-situ', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_situ') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX BANK -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-ref', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_ref') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX AUDIT -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-audit', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_audit') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX MITRA -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-mitra', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_mitra') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX PERNYATAAN -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-pernyataan', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_pernyataan') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX PI -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-pi', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_pi') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX PTPP -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-ptpp', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_ptpp') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX KEMAMPUAN -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-kemampuan', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_kemampuan') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX CSMS -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-csms', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_csms') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX CP -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-cp', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_cp') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX LOGO -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-logo', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_logo') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX EDIT AKTA -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-edit-akta', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/edit_akta') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX EDIT KEMENKUMHAM -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-edit-kemenkumham', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/edit_kemenkumham') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX EDIT SIUP -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-edit-siup', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/edit_siup') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX EDIT TDP -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-edit-tdp', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/edit_tdp') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX EDIT NPWP -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-edit-npwp', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/edit_npwp') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX EDIT SPPKP -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-edit-sppkp', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/edit_sppkp') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+  <!-- AJAX EDIT SITU -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-edit-situ', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/edit_situ') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX EDIT BANK -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-edit-ref', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/edit_ref') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX EDIT AUDIT -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-edit-audit', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/edit_audit') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/dokumen') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX AWARDS -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-awards', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/add_awards') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/User/main/awards') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX EDIT AWARDS -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-edit-awards', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/User/main/edit_awards') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+              window.location.replace("<?= base_url('index.php/User/main/awards') ?>");
+                // var out = jQuery.parseJSON(data);
+                // if (out.status == true) {
+                //     if(window.confirm(out.message)) {
+                //         window.location.replace("<?= base_url('index.php/User/main/awards') ?>");
+                //     }
+                // } else {
+                //     window.confirm(out.message);
+                // }
+            })
+            a.preventDefault();
+        });
+    </script>
+
 </body>
 
 </html>

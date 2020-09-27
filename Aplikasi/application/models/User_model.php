@@ -23,10 +23,22 @@ class User_model extends CI_Model
         $this->db->insert($table, $data);
     }
 
+    public function add_dokumen($up, $table)
+    {
+        $this->db->insert($table, $up);
+    }
+
     public function log($log, $table)
     {
         $this->db->insert($table, $log);
     }
 
-    
+    function hapus_kendaraan($where,$table){
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+
+    function edit_data($where,$table){		
+        return $this->db->get_where($table,$where);
+    }
 }

@@ -17,6 +17,10 @@ class Main extends CI_Controller {
 	}
 	public function index()
 	{
+        $data['dokumen'] = $this->db->query("SELECT COUNT(*) AS jumlah from document")->row_array();
+        $data['kendaraan'] = $this->db->query("SELECT COUNT(*) AS jumlah from vehicle")->row_array();
+        $data['general'] = $this->db->query("SELECT COUNT(*) AS jumlah from general")->row_array();
+        $data['awards'] = $this->db->query("SELECT COUNT(*) AS jumlah from awards")->row_array();
 		$data['view'] = 'user/dashboard';
 		$this->load->view('user/layout', $data);
     }

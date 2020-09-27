@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2020 at 07:48 PM
+-- Generation Time: Sep 27, 2020 at 07:53 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -50,6 +50,7 @@ INSERT INTO `asset` (`asset_id`, `asset_type`) VALUES
 
 CREATE TABLE `awards` (
   `awards_id` int(35) NOT NULL,
+  `vendor_id` varchar(30) NOT NULL,
   `awards_type` varchar(35) NOT NULL,
   `awards_year` tinyint(4) NOT NULL,
   `awards_num` text NOT NULL,
@@ -151,6 +152,7 @@ INSERT INTO `document` (`doc_id`, `vendor_id`, `doc_type`, `doc_file`, `doc_stat
 
 CREATE TABLE `general` (
   `general_id` int(30) NOT NULL,
+  `vendor_id` varchar(30) NOT NULL,
   `general_type` varchar(35) NOT NULL,
   `general_qty` int(35) NOT NULL,
   `general_status` varchar(50) NOT NULL
@@ -229,6 +231,7 @@ INSERT INTO `user` (`id_user`, `level_id`, `fullname`, `gender`, `email`, `passw
 
 CREATE TABLE `vehicle` (
   `vehicle_id` int(30) NOT NULL,
+  `vendor_id` varchar(30) NOT NULL,
   `vehicle_type` varchar(35) NOT NULL,
   `vehicle_brand` varchar(40) NOT NULL,
   `vihecle_qty` int(15) NOT NULL,

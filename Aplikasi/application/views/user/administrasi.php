@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group">
                         <label for="founding_date">Tahun Didirikan</label>
-                        <input type="text" class="form-control" id="founding_date" name="founding_date" placeholder="Tulis tahun perusahaan anda mulai berdiri">
+                        <input type="text" class="form-control" onkeypress="return isNumberKey(event)" maxlength="4" id="founding_date" name="founding_date" placeholder="Tulis tahun perusahaan anda mulai berdiri">
                     </div>
                     <div class="form-group">
                         <label for="address">Alamat Perusahaan</label>
@@ -30,7 +30,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="postcode">Kode Pos</label>
-                            <input type="text" class="form-control" id="postcode" name="postcode" placeholder="Kode Pos">
+                            <input type="text" class="form-control" onkeypress="return isNumberKey(event)" id="postcode" name="postcode" placeholder="Kode Pos">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="vendor_email">E-mail</label>
@@ -40,11 +40,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="vendor_phone">Telepon</label>
-                            <input type="text" class="form-control" id="vendor_phone" name="vendor_phone" placeholder="Telepon">
+                            <input type="text" class="form-control" onkeypress="return isNumberKey(event)" id="vendor_phone" name="vendor_phone" placeholder="Telepon">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="vendor_fax">Fax</label>
-                            <input type="text" class="form-control" id="vendor_fax" name="vendor_fax" placeholder="Fax">
+                            <input type="text" class="form-control" onkeypress="return isNumberKey(event)" id="vendor_fax" name="vendor_fax" placeholder="Fax">
                         </div>
                     </div>
                     <div class="form-group">
@@ -54,7 +54,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="business_field_id">Bidang Usaha</label>
-                            <select id="business_field_id" name="business_field_id" class="form-control">
+                            <select id="business_field_id" name="business_field_id" class="form-control selectpicker" data-live-search="true" data-header="Pilih Bidang Usaha">
                                 <option selected disabled>Pilih</option>
                                 <?php foreach ($business_field as $row) : ?>
                                     <option value="<?php echo $row->business_field_id; ?>"><?php echo $row->business_field_name; ?></option>
@@ -63,7 +63,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="category_id">Kategori</label>
-                            <select id="category_id" name="category_id" class="form-control">
+                            <select id="category_id" name="category_id" class="form-control selectpicker" data-live-search="true" data-header="Pilih Kategori">
                                 <option selected disabled>Pilih</option>
                                 <?php foreach ($category as $row) : ?>
                                     <option value="<?php echo $row->category_id; ?>"><?php echo $row->category_name; ?></option>

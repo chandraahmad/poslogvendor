@@ -33,6 +33,7 @@ class Main extends CI_Controller {
 			if(count($result->result()) > 0) { 
 				$arr = $result->row_array(); 
 				if($arr['level_id'] == 1) {
+					date_default_timezone_set('Asia/Jakarta');
 					$data_session = array(
 						'id_user' => $arr['id_user'],
 						'nama' => $arr['fullname'],
@@ -40,10 +41,12 @@ class Main extends CI_Controller {
 						'email' => $arr['email'],
 						'status' => True
 						);
-						
+					$date = date('Y-m-d H:i:s');
 					$this->session->set_userdata($data_session);
+					$this->db->query("UPDATE user SET last_login = '$date' WHERE id_user = '$arr[id_user]'");
 					redirect(base_url("index.php/Admin/main"));
 				} else {
+					date_default_timezone_set('Asia/Jakarta');
 					$data_session = array(
 						'id_user' => $arr['id_user'],
 						'nama' => $arr['fullname'],
@@ -51,7 +54,8 @@ class Main extends CI_Controller {
 						'email' => $arr['email'],
 						'status' => True
 						);
-
+					$date = date('Y-m-d H:i:s');
+					$this->db->query("UPDATE user SET last_login = '$date' WHERE id_user = '$arr[id_user]' ");
 					$this->session->set_userdata($data_session);
 					redirect(base_url("index.php/User/main"));
 				}

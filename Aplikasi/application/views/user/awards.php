@@ -71,7 +71,7 @@
                 </div>
                 <div class="form-group">
                     <label for="awards_year">Tahun Sertifikasi/Penghargaan</label>
-                    <input type="text" class="form-control" id="awards_year" name="awards_year" placeholder="Tahun Sertifikasi/Penghargaan">
+                    <input type="text" class="form-control" id="awards_year" onkeypress="return isNumberKey(event)" maxlength="4" name="awards_year" placeholder="Tahun Sertifikasi/Penghargaan">
                 </div>
                 <div class="form-group">
                     <label for="awards_num">Nomor Sertifikasi/Penghargaan</label>

@@ -71,7 +71,7 @@
                 </div>
                 <div class="form-group">
                     <label for="general_qty">Quantity</label>
-                    <input type="text" class="form-control" id="general_qty" name="general_qty" placeholder="Quantity">
+                    <input type="text" class="form-control" onkeypress="return isNumberKey(event)" id="general_qty" name="general_qty" placeholder="Quantity">
                 </div>
                 <div class="form-group">
                     <label for="general_status">Status Kepemilikan</label>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="form-group">
                     <label for="general_qty">Quantity</label>
-                    <input type="text" class="form-control" id="general_qty" name="general_qty" value="<?php echo $general_qty;?>" placeholder="Quantity">
+                    <input type="text" class="form-control" onkeypress="return isNumberKey(event)" id="general_qty" name="general_qty" value="<?php echo $general_qty;?>" placeholder="Quantity">
                 </div>
                 <div class="form-group">
                     <label for="general_status">Status Kepemilikan</label>

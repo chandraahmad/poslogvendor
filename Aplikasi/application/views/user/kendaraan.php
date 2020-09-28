@@ -84,11 +84,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="vehicle_qty">Quantity</label>
-                        <input type="text" class="form-control" id="vehicle_qty" name="vehicle_qty" placeholder="Quantity">
+                        <input type="text" class="form-control" onkeypress="return isNumberKey(event)" id="vehicle_qty" name="vehicle_qty" placeholder="Quantity">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="vehicle_year">Tahun</label>
-                      <input type="text" class="form-control" id="vehicle_year" name="vehicle_year" placeholder="Tahun">
+                      <input type="text" class="form-control" onkeypress="return isNumberKey(event)" maxlength="4" id="vehicle_year" name="vehicle_year" placeholder="Tahun">
                     </div>
                 </div>
                 <div class="form-group">
@@ -161,11 +161,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                       <label for="vehicle_qty">Quantity</label>
-                        <input type="text" class="form-control" id="vehicle_qty" name="vehicle_qty" value="<?php echo $vehicle_qty;?>" placeholder="Quantity">
+                        <input type="text" class="form-control" onkeypress="return isNumberKey(event)" id="vehicle_qty" name="vehicle_qty" value="<?php echo $vehicle_qty;?>" placeholder="Quantity">
                     </div>
                     <div class="form-group col-md-6">
                       <label for="vehicle_year">Tahun</label>
-                      <input type="text" class="form-control" id="vehicle_year" name="vehicle_year" value="<?php echo $vehicle_year;?>" placeholder="Tahun">
+                      <input type="text" class="form-control" onkeypress="return isNumberKey(event)" maxlength="4" id="vehicle_year" name="vehicle_year" value="<?php echo $vehicle_year;?>" placeholder="Tahun">
                     </div>
                 </div>
                 <div class="form-group">

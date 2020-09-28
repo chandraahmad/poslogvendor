@@ -125,7 +125,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/akta';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -178,7 +178,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/kemenkumham';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -231,7 +231,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/siup';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -284,7 +284,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/tdp';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -337,7 +337,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/npwp';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -390,7 +390,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/sppkp';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -443,7 +443,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/situ';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -496,7 +496,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/bank';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -549,7 +549,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/audit';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -602,7 +602,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/mitra';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -655,7 +655,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/pernyataan';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -708,7 +708,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/pi';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -761,7 +761,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/ptpp';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -814,7 +814,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/kemampuan';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -867,7 +867,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/csms';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -920,7 +920,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/cp';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -973,7 +973,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/logo';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -1026,7 +1026,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/akta';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -1074,7 +1074,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/kemenkumham';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -1122,7 +1122,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/siup';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -1170,7 +1170,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/tdp';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -1218,7 +1218,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/npwp';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -1266,7 +1266,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/sppkp';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -1314,7 +1314,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/situ';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -1362,7 +1362,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/bank';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         
@@ -1410,7 +1410,7 @@ class Main extends CI_Controller {
         $id_user = $this->session->userdata('id_user');        
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
-        $config['upload_path']          = './assets/dokumen/audit';
+        $config['upload_path']          = './assets/dokumen';
 		$config['allowed_types']        = 'pdf|doc|docx';
         $config['max_size']             = 10000;
         

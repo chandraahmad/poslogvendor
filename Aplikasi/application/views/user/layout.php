@@ -19,6 +19,7 @@
   <link href="<?php echo base_url(); ?>assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
   <link href="<?php echo base_url(); ?>assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.min.css">
 
 </head>
 
@@ -116,6 +117,10 @@
 
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url(); ?>assets/admin/js/demo/datatables-demo.js"></script>
+
+  <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/dist/js/i18n/defaults-*.min.js"></script>
+
   <script>
     $("#founding_date").datepicker({
     format: "yyyy",
@@ -803,6 +808,17 @@
             a.preventDefault();
         });
     </script>
+
+    <script>
+    function isNumberKey(evt)
+		{
+			var charCode = (evt.which) ? evt.which : evt.keyCode;
+			if (charCode != 46 && charCode > 31 
+			&& (charCode < 48 || charCode > 57))
+			return false;
+			return true;
+		}  
+    </script> 
 
 </body>
 

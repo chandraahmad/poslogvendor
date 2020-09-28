@@ -17,6 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="<?php echo base_url(); ?>assets/admin/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/bootstrap-select.min.css">
 
 </head>
 
@@ -55,7 +57,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
+            <span>Copyright &copy; Tim Seleksi ICT PT. Pos Logistik Indonesia 2020</span>
           </div>
         </div>
       </footer>
@@ -85,7 +87,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="<?php echo base_url(); ?>index.php/main/logout">Logout</a>
         </div>
       </div>
     </div>
@@ -107,6 +109,16 @@
   <!-- Page level custom scripts -->
   <script src="<?php echo base_url(); ?>assets/admin/js/demo/chart-area-demo.js"></script>
   <script src="<?php echo base_url(); ?>assets/admin/js/demo/chart-pie-demo.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="<?php echo base_url(); ?>assets/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<?php echo base_url(); ?>assets/admin/js/demo/datatables-demo.js"></script>
+
+  <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/dist/js/i18n/defaults-*.min.js"></script>
 
 </body>
 

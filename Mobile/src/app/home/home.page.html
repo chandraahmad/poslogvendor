@@ -1,0 +1,77 @@
+<ion-content padding>
+    <ion-row class="welcome-row">
+        <ion-col class="welcome-col">
+            <h2>Welcome</h2>
+            <p>{{ Storage.fullname }}</p>
+        </ion-col>
+        <ion-col size="12">
+            <ion-card class="profile-card">
+                <ion-card-content>
+                    <ion-item lines="none">
+                        <p style="font-size: 12px;" slot="start">
+                            {{ Administration.vendor_name }}<br>
+                            {{ Administration.vendor_phone }}<br>
+                            {{ Administration.vendor_email }}
+                        </p>
+                        <ion-row slot="end">
+                            <ion-col class="profile-col" (click)="Profile()">
+                                <ion-icon class="profile-icon" color="vendorposlog" name="person"></ion-icon>
+                                <p>My Account</p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-item>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+    <ion-row class="status-row">
+        <ion-col size="12">
+            <ng-template [ngIf]="Administration.vendor_status == '1'">
+                <ion-card class="status-card">
+                    <ion-card-content>
+                        <ion-item class="status-item">
+                            <p>
+                                <b>{{ Administration.vendor_name }}</b><br>
+                                <b>Belum Terverifikasi</b><br>
+                                Selamat anda telah terrecord dalam sistem kami dan sedang kami verifikasi
+                            </p>
+                        </ion-item>
+                    </ion-card-content>
+                </ion-card>
+            </ng-template>
+            <ng-template [ngIf]="Administration.vendor_status == '0'">
+                <ion-card class="status-card">
+                    <ion-card-content>
+                        <ion-item class="status-item">
+                            <p>
+                                <b>{{ Storage.fullname }}</b><br>
+                                <b>Pendaftaran Perusahaan</b><br>
+                                Lakukan pendaftaran perusahaan pada menu Administrasi segera !
+                            </p>
+                        </ion-item>
+                    </ion-card-content>
+                </ion-card>
+            </ng-template>
+        </ion-col>
+    </ion-row>
+    <ion-row class="menu-row">
+        <ion-col size="3" class="menu-col">
+            <a class="menu-href" (click)="Administrasi()">
+                <ion-icon name="newspaper-outline" class="menu-icon"></ion-icon>
+                <p>Administrasi</p>
+            </a>
+        </ion-col>
+        <ion-col size="3" class="menu-col">
+            <a class="menu-href" (click)="Document()">
+                <ion-icon name="document-text-outline" class="menu-icon"></ion-icon>
+                <p>Dokumen</p>
+            </a>
+        </ion-col>
+        <ion-col size="3" class="menu-col">
+            <a class="menu-href">
+                <ion-icon name="briefcase-outline" class="menu-icon"></ion-icon>
+                <p>Aset</p>
+            </a>
+        </ion-col>
+    </ion-row>
+</ion-content>

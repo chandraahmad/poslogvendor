@@ -1,0 +1,25 @@
+.header-title{
+    font-size: 18px;
+    color: #ff8a35;
+}
+.profile-image{
+	padding-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+.profile-image img{
+	width: 90px;
+  	height: 90px;
+}
+.profile-font{
+	font-size: 12px;
+}
+.ion-color-vendorposlog {
+	--ion-color-base: var(--ion-color-vendorposlog);
+	--ion-color-base-rgb: var(--ion-color-vendorposlog-rgb);
+	--ion-color-contrast: var(--ion-color-vendorposlog-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-vendorposlog-contrast-rgb);
+	--ion-color-shade: var(--ion-color-vendorposlog-shade);
+	--ion-color-tint: var(--ion-color-vendorposlog-tint);
+}

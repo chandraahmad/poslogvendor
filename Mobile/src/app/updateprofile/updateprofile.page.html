@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="vendorposlog" text="" icon="close-circle-outline" defaultHref="/profile"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="header-title">Update your profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+		<ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Full Name *</ion-label>
+				<ion-input type="text" [(ngModel)]="Updateprofile.fullname"></ion-input>
+			</ion-item>
+        </ion-col>
+        <ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Gender *</ion-label>
+				<ion-select mode="ios" [selectedText]="Updateprofile.gender" [(ngModel)]="Updateprofile.gender">
+                    <ion-select-option *ngFor="let vgetallgender of getallgender" value="{{ vgetallgender }}">{{ vgetallgender }}</ion-select-option>
+                </ion-select>
+			</ion-item>
+		</ion-col>
+        <ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Email *</ion-label>
+				<ion-input type="email" [(ngModel)]="Updateprofile.email"></ion-input>
+			</ion-item>
+		</ion-col>
+		<ion-col size="12">
+			<p style="font-size: 12px; padding-left: 10px; font-style: italic;">Note : * Column cannot be null</p>
+		</ion-col>
+		<ion-col size="12">
+			<ion-button expand="block" mode="ios" color="vendorposlog" (click)="UpdateProfileProcess()">Update Now</ion-button>
+		</ion-col>
+	</ion-row>
+</ion-content>

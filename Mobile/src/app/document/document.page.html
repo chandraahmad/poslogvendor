@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="vendorposlog" text="" icon="close-circle-outline" defaultHref="/home"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="header-title">Document</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col size="12">
+            <ion-list>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Nomor NIB *</ion-label>
+				    <ion-input type="text" [(ngModel)]="Document.office_id"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;">Akta Pendirian *</ion-label>
+                    <ion-button mode="ios" size="small" (click)="ShowActionSheet(Document.akta_pendirian)">Upload</ion-button>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;">Pengesahan Kemenkumham *</ion-label>
+                    <ion-button mode="ios" size="small" (click)="ShowActionSheet(Document.pengesahan_kemenkumham)">Upload</ion-button>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;">Akta Perubahan</ion-label>
+                    <ion-button mode="ios" size="small" (click)="ShowActionSheet(Document.akta_perubahan)">Upload</ion-button>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;">Pengesahan Kemenkumham</ion-label>
+                    <ion-button mode="ios" size="small" (click)="ShowActionSheet(Document.pengesahan_kemenkumham2)">Upload</ion-button>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;">Surat Izin Usaha *</ion-label>
+                    <ion-button mode="ios" size="small" (click)="ShowActionSheet(Document.surat_izin_usaha)">Upload</ion-button>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;">TDP *</ion-label>
+                    <ion-button mode="ios" size="small" (click)="ShowActionSheet(Document.TDP)">Upload</ion-button>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;">NPWP *</ion-label>
+                    <ion-button mode="ios" size="small" (click)="ShowActionSheet(Document.NPWP)">Upload</ion-button>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;">SPPKP</ion-label>
+                    <ion-button mode="ios" size="small" (click)="ShowActionSheet(Document.SPPKP)">Upload</ion-button>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;">Surat Izin Tempat Usaha *</ion-label>
+                    <ion-button mode="ios" size="small" (click)="ShowActionSheet(Document.surat_izin_tempat_usaha)">Upload</ion-button>
+                </ion-item>
+            </ion-list>
+        </ion-col>
+    </ion-row>
+</ion-content>

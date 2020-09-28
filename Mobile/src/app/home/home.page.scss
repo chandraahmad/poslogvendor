@@ -1,0 +1,81 @@
+.welcome-row{
+  background: linear-gradient(162deg, rgba(56, 70, 108, .8) 20%, rgba(56, 70, 108, .8) 100%), url('../../assets/images/national-transport.jpg') no-repeat;
+  background-size: 100% 200px;
+  height: 200px;
+}
+.welcome-col{
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+}
+.welcome-col p{
+  text-align: center;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+}
+.welcome-col h2{
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+}
+.profile-col{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.profile-icon{
+  width: 30px;
+  height: 30px;
+}
+.profile-card{
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 0px 17px 0px rgba(255,137,53,0.53);
+  -moz-box-shadow: 0px 0px 17px 0px rgba(255,137,53,0.53);
+  box-shadow: 0px 0px 17px 0px rgba(255,137,53,0.55);
+}
+.menu-col{
+  margin-left: auto;
+  margin-right: auto;
+  border: solid 3px #ff8a35;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+}
+.menu-row{
+  margin-top: 20px;
+  padding-top: 50px;
+}
+.menu-icon{
+  width: 30px;
+  height: 30px;
+}
+.menu-href{
+  color: #d22429;
+}
+
+.status-row{
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+.status-card{
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 0px 17px 0px rgba(255,137,53,0.53);
+  -moz-box-shadow: 0px 0px 17px 0px rgba(255,137,53,0.53);
+  box-shadow: 0px 0px 17px 0px rgba(255,137,53,0.55);
+}
+.status-item p{
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px; 
+  text-align: center;
+}
+.ion-color-vendorposlog {
+	--ion-color-base: var(--ion-color-vendorposlog);
+	--ion-color-base-rgb: var(--ion-color-vendorposlog-rgb);
+	--ion-color-contrast: var(--ion-color-vendorposlog-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-vendorposlog-contrast-rgb);
+	--ion-color-shade: var(--ion-color-vendorposlog-shade);
+	--ion-color-tint: var(--ion-color-vendorposlog-tint);
+}

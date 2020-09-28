@@ -1,0 +1,93 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="vendorposlog" text="" icon="close-circle-outline" defaultHref="/home"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="header-title">Form Administration</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+		<ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Nama Perusahaan *</ion-label>
+				<ion-input type="text" [(ngModel)]="Administration.vendor_name"></ion-input>
+			</ion-item>
+        </ion-col>
+        <ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Alamat *</ion-label>
+				<ion-input type="text" [(ngModel)]="Administration.address"></ion-input>
+			</ion-item>
+        </ion-col>
+        <ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Kode Pos *</ion-label>
+				<ion-input type="number" [(ngModel)]="Administration.postcode"></ion-input>
+			</ion-item>
+        </ion-col>
+        <ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Telephone *</ion-label>
+				<ion-input type="number" [(ngModel)]="Administration.vendor_phone"></ion-input>
+			</ion-item>
+        </ion-col>
+        <ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Fax *</ion-label>
+				<ion-input type="number" [(ngModel)]="Administration.vendor_fax"></ion-input>
+			</ion-item>
+        </ion-col>
+        <ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">PIC *</ion-label>
+				<ion-input type="text" [(ngModel)]="StorageUser.fullname"></ion-input>
+			</ion-item>
+        </ion-col>
+        <ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Email *</ion-label>
+				<ion-input type="text" [(ngModel)]="Administration.vendor_email"></ion-input>
+			</ion-item>
+        </ion-col>
+        <ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Website *</ion-label>
+				<ion-input type="text" [(ngModel)]="Administration.vendor_website"></ion-input>
+			</ion-item>
+        </ion-col>
+        <ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Bidang Usaha *</ion-label>
+				<ion-select mode="ios" [(ngModel)]="Administration.business_field_id" (ionChange)="GetByidAllCategory($event)">
+                    <ion-select-option *ngFor="let vBusinessField of BusinessField" value="{{ vBusinessField.business_field_id }}">{{ vBusinessField.business_field_name }}</ion-select-option>
+                </ion-select>
+			</ion-item>
+        </ion-col>
+        <ng-template [ngIf]="CategoryCondition != null && CategoryCondition != false">
+            <ion-col size="12">
+                <ion-item>
+                    <ion-label style="color: black;" position="floating">Kategori Bidang Usaha *</ion-label>
+                    <ion-select mode="ios" [(ngModel)]="Administration.category_id">
+                        <ion-select-option *ngFor="let vCategory of Category" value="{{ vCategory.category_id }}">{{ vCategory.category_name }}</ion-select-option>
+                    </ion-select>
+                </ion-item>
+            </ion-col>
+        </ng-template>
+        <ion-col size="12">
+			<ion-item>
+				<ion-label style="color: black;" position="floating">Deskripsi Umum Perusahaan *</ion-label>
+				<ion-input type="text" [(ngModel)]="Administration.vendor_desc"></ion-input>
+			</ion-item>
+        </ion-col>
+        <ion-col size="12">
+            <ng-template [ngIf]="AdministrationCondition == true">
+                <ion-button expand="block" mode="ios" color="vendorposlog" (click)="AdministrationProcess()">Update Administration</ion-button>
+            </ng-template>
+            <ng-template [ngIf]="AdministrationCondition == false">
+                <ion-button expand="block" mode="ios" color="vendorposlog" (click)="AdministrationProcess()">Save Administration</ion-button>
+            </ng-template>
+		</ion-col>
+    </ion-row>
+</ion-content>

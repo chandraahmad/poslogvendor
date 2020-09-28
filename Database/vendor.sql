@@ -185,6 +185,7 @@ INSERT INTO `level` (`level_id`, `level_name`) VALUES
 
 CREATE TABLE `log` (
   `log_id` int(30) NOT NULL,
+  `id_user` varchar(30) NOT NULL,
   `log_desc` text NOT NULL,
   `log_time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -193,9 +194,9 @@ CREATE TABLE `log` (
 -- Dumping data for table `log`
 --
 
-INSERT INTO `log` (`log_id`, `log_desc`, `log_time`) VALUES
-(2, 'User menambahkan data administrasi vendor', '2020-09-26 18:55:27'),
-(3, 'User menambahkan data administrasi vendor', '2020-09-26 19:00:38');
+INSERT INTO `log` (`log_id`, `id_user`, `log_desc`, `log_time`) VALUES
+(2, 'USER260920200001', 'User menambahkan data administrasi vendor', '2020-09-26 18:55:27'),
+(3, 'USER260920200001', 'User menambahkan data administrasi vendor', '2020-09-26 19:00:38');
 
 -- --------------------------------------------------------
 
@@ -234,7 +235,7 @@ CREATE TABLE `vehicle` (
   `vendor_id` varchar(30) NOT NULL,
   `vehicle_type` varchar(35) NOT NULL,
   `vehicle_brand` varchar(40) NOT NULL,
-  `vihecle_qty` int(15) NOT NULL,
+  `vehicle_qty` int(15) NOT NULL,
   `vehicle_year` tinyint(4) NOT NULL,
   `type` varchar(45) NOT NULL,
   `vehicle_payload` varchar(30) NOT NULL,

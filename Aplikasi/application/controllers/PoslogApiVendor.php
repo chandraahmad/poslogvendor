@@ -307,4 +307,41 @@ class PoslogApiVendor extends CI_Controller {
 
 		echo json_encode($output);
 	}
+
+	public function UploadFileDokumen()
+	{
+		$nmfile = $_FILES['file']['name'];
+		if (file_exists('./assets/images/Upload/'.$nmfile)){
+			@unlink('./assets/images/Upload/'.$nmfile);
+		}
+		
+		$config['upload_path'] = './assets/dokumen/situ';
+		$config['file_name'] = $nmfile;
+        $config['allowed_types'] = '*';
+        $config['max_size'] = 2000;
+        $config['max_width'] = 7024;
+        $config['max_height'] = 7680;
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if ($this->upload->do_upload('file')) {
+			$file = $this->upload->data();
+			$output = array(
+				'condition' => true,
+				'message' => 'Upload Successfully',
+				'data' => null
+			);
+		} else {
+			$output = array(
+				'condition' => false,
+				'message' => 'Upload Failed',
+				'data' => $this->upload->display_errors()
+			);
+		}
+		
+		header('Access-Control-Allow-Origin: *');
+		header('Access-Control-Allow-Method: PUT, GET, POST, DELETE, OPTIONS');
+		header('Access-Control-Allow-Headers: Content-Type, x-xsrf-token');
+		echo json_encode($output);
+	}
 }

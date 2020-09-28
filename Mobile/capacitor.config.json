@@ -1,0 +1,13 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "vendor_poslog",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

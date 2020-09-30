@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="vendorposlog" text="" icon="arrow-back-outline" defaultHref="/home"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="header-title">Aset</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col size="12">
+            <ion-list *ngFor="let vAsset of Asset">
+                <ng-template [ngIf]="vAsset.asset_id == 1">
+                    <ion-list-header>
+                        <ion-label style="font-size: 15px;">{{ vAsset.asset_type }}</ion-label>
+                    </ion-list-header>
+                    <ion-item lines="full" *ngFor="let vVehile of Vehile">
+                        <ion-icon slot="end" color="vendorposlog" name="eye"></ion-icon>
+                        <ion-icon slot="end" color="vendorposlog" name="trash" (click)="DeleteVehile(vVehile.vehicle_id)"></ion-icon>
+                        <ion-label>
+                            <h2 class="aset-font">Jenis Kendaraan : {{ vVehile.vehicle_type }}</h2>
+                            <h2 class="aset-font">Merek : {{ vVehile.vehicle_brand }}</h2>
+                        </ion-label>
+                    </ion-item>
+                    <ion-button expand="block" mode="ios" size="small" color="vendorposlog" (click)="VehicleForm()">Tambah Kendaraan</ion-button>
+                </ng-template>
+                <ng-template [ngIf]="vAsset.asset_id == 2">
+                    <ion-list-header>
+                        <ion-label style="font-size: 15px;">{{ vAsset.asset_type }}</ion-label>
+                    </ion-list-header>
+                    <ion-item lines="full" *ngFor="let vGeneral of General">
+                        <ion-icon slot="end" color="vendorposlog" name="trash" (click)="DeleteGeneral(vGeneral.general_id)"></ion-icon>
+                        <ion-label>
+                            <h2 class="aset-font">Jenis Asset : {{ vGeneral.general_type }}</h2>
+                            <h2 class="aset-font">Status Kepemilikan : {{ vGeneral.general_status }}</h2>
+                            <h2 class="aset-font">Qty : {{ vGeneral.general_qty }}</h2>
+                        </ion-label>
+                    </ion-item>
+                    <ion-button expand="block" mode="ios" size="small" color="vendorposlog" (click)="GeneralForm()">Tambah General</ion-button>
+                </ng-template>
+                <ng-template [ngIf]="vAsset.asset_id == 3">
+                    <ion-list-header>
+                        <ion-label style="font-size: 15px;">{{ vAsset.asset_type }}</ion-label>
+                    </ion-list-header>
+                    <ion-item lines="full" *ngFor="let vSertifikat of Sertifikat">
+                        <ion-icon slot="end" color="vendorposlog" name="trash" (click)="DeleteSertifikat(vSertifikat.awards_id)"></ion-icon>
+                        <ion-label>
+                            <h2 class="aset-font">Jenis Sertifikat/Penghargaan : {{ vSertifikat.awards_type }}</h2>
+                            <h2 class="aset-font">Tahun : {{ vSertifikat.awards_year }}</h2>
+                            <h2 class="aset-font">Nomor : {{ vSertifikat.awards_num }}</h2>
+                        </ion-label>
+                    </ion-item>
+                    <ion-button expand="block" mode="ios" size="small" color="vendorposlog" (click)="SertifikatForm()">Tambah Sertifikat</ion-button>
+                </ng-template>
+            </ion-list>
+        </ion-col>
+    </ion-row>
+</ion-content>

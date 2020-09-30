@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="vendorposlog" text="" icon="close-circle-outline" defaultHref="/aset"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="header-title">General</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col size="12">
+            <ion-list>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Jenis Aset *</ion-label>
+                    <ion-input type="text" [(ngModel)]="DataGeneral.general_type"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Qty *</ion-label>
+                    <ion-input type="number" [(ngModel)]="DataGeneral.general_qty"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Status Kepemilikan *</ion-label>
+                    <ion-input type="text" [(ngModel)]="DataGeneral.general_status"></ion-input>
+                </ion-item>
+                <ion-button expand="block" mode="ios" color="vendorposlog" (click)="GeneralProcess()">Save General</ion-button>
+            </ion-list>
+        </ion-col>
+    </ion-row>
+</ion-content>

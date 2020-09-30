@@ -26,8 +26,32 @@ class PoslogApiVendorModel extends CI_Model {
 		return $query->result();
     }
 
+    public function get_all_asset() {
+        $query = $this->db->select('*')->from('asset')
+                ->get();
+		return $query->result();
+    }
+
     public function get_byid_all_category($data) {
         $query = $this->db->select('*')->from('category')->where('business_field_id', $data)
+                ->get();
+		return $query->result();
+    }
+
+    public function get_byid_all_vehicle($data) {
+        $query = $this->db->select('*')->from('vehicle')->where('vendor_id', $data)
+                ->get();
+		return $query->result();
+    }
+
+    public function get_byid_all_general($data) {
+        $query = $this->db->select('*')->from('general')->where('vendor_id', $data)
+                ->get();
+		return $query->result();
+    }
+
+    public function get_byid_all_sertifikat($data) {
+        $query = $this->db->select('*')->from('awards')->where('vendor_id', $data)
                 ->get();
 		return $query->result();
     }
@@ -49,6 +73,21 @@ class PoslogApiVendorModel extends CI_Model {
 		return $query;
     }
 
+    public function insert_vehicle($data) {
+        $query = $this->db->insert('vehicle', $data);
+		return $query;
+    }
+
+    public function insert_general($data) {
+        $query = $this->db->insert('general', $data);
+		return $query;
+    }
+
+    public function insert_sertifikat($data) {
+        $query = $this->db->insert('awards', $data);
+		return $query;
+    }
+
     public function update_administration($data) {
 		$this->db->where('id_user',$data['id_user']);
         unset($data['id_user']);
@@ -62,6 +101,21 @@ class PoslogApiVendorModel extends CI_Model {
 		$this->db->where('id_user',$data['id_user']);
         unset($data['id_user']);
         return $this->db->update('user',$data);
+    }
+    
+    public function delete_vehicle($id) {
+		$this->db->where('vehicle_id',$id);
+		return $this->db->delete('vehicle');
+    }
+    
+    public function delete_general($id) {
+		$this->db->where('general_id',$id);
+		return $this->db->delete('general');
+    }
+    
+    public function delete_awards($id) {
+		$this->db->where('awards_id',$id);
+		return $this->db->delete('awards');
 	}
 
     function get_kode(){

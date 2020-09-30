@@ -73,4 +73,8 @@ export class HomePage {
     this.Router.navigate(['document']);
   }
 
+  Aset() {
+    this.Router.navigate(['aset']);
+  }
+
 }

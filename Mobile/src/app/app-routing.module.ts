@@ -39,6 +39,22 @@ const routes: Routes = [
     path: 'document',
     loadChildren: () => import('./document/document.module').then( m => m.DocumentPageModule)
   },
+  {
+    path: 'aset',
+    loadChildren: () => import('./aset/aset.module').then( m => m.AsetPageModule)
+  },
+  {
+    path: 'vehicleform',
+    loadChildren: () => import('./vehicleform/vehicleform.module').then( m => m.VehicleformPageModule)
+  },
+  {
+    path: 'general',
+    loadChildren: () => import('./general/general.module').then( m => m.GeneralPageModule)
+  },
+  {
+    path: 'sertifikatform',
+    loadChildren: () => import('./sertifikatform/sertifikatform.module').then( m => m.SertifikatformPageModule)
+  },
 ];
 
 @NgModule({

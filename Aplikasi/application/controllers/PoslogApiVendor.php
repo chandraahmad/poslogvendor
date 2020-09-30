@@ -124,6 +124,114 @@ class PoslogApiVendor extends CI_Controller {
 		echo json_encode($output);
 	}
 
+	public function GetByidAllVehicle() {
+		if(isset($_GET['vendor_id'])) {
+			$vendor_id = $_GET['vendor_id'];
+			if($vendor_id != NULL) {
+				$data['GetByidAllVehicle'] = $this->PoslogApiVendorModel->get_byid_all_vehicle($vendor_id);
+				if($data['GetByidAllVehicle'] != NULL) {
+					$output = array(
+						'condition' => true,
+						'message' => 'Data available',
+						'data' => $data['GetByidAllVehicle']
+					);
+				}else{
+					$output = array(
+						'condition' => false,
+						'message' => 'Data not available',
+						'data' => null
+					);
+				}
+			}else{
+				$output = array(
+					'condition' => false,
+					'message' => 'Wrong parameter',
+					'data' => null
+				);
+			}
+		}else{
+			$output = array(
+				'condition' => false,
+				'message' => 'Wrong parameter',
+				'data' => null
+			);
+		}
+
+		echo json_encode($output);
+	}
+
+	public function GetByidAllGeneral() {
+		if(isset($_GET['vendor_id'])) {
+			$vendor_id = $_GET['vendor_id'];
+			if($vendor_id != NULL) {
+				$data['GetByidAllGeneral'] = $this->PoslogApiVendorModel->get_byid_all_general($vendor_id);
+				if($data['GetByidAllGeneral'] != NULL) {
+					$output = array(
+						'condition' => true,
+						'message' => 'Data available',
+						'data' => $data['GetByidAllGeneral']
+					);
+				}else{
+					$output = array(
+						'condition' => false,
+						'message' => 'Data not available',
+						'data' => null
+					);
+				}
+			}else{
+				$output = array(
+					'condition' => false,
+					'message' => 'Wrong parameter',
+					'data' => null
+				);
+			}
+		}else{
+			$output = array(
+				'condition' => false,
+				'message' => 'Wrong parameter',
+				'data' => null
+			);
+		}
+
+		echo json_encode($output);
+	}
+
+	public function GetByidAllSertifikat() {
+		if(isset($_GET['vendor_id'])) {
+			$vendor_id = $_GET['vendor_id'];
+			if($vendor_id != NULL) {
+				$data['GetByidAllSertifikat'] = $this->PoslogApiVendorModel->get_byid_all_sertifikat($vendor_id);
+				if($data['GetByidAllSertifikat'] != NULL) {
+					$output = array(
+						'condition' => true,
+						'message' => 'Data available',
+						'data' => $data['GetByidAllSertifikat']
+					);
+				}else{
+					$output = array(
+						'condition' => false,
+						'message' => 'Data not available',
+						'data' => null
+					);
+				}
+			}else{
+				$output = array(
+					'condition' => false,
+					'message' => 'Wrong parameter',
+					'data' => null
+				);
+			}
+		}else{
+			$output = array(
+				'condition' => false,
+				'message' => 'Wrong parameter',
+				'data' => null
+			);
+		}
+
+		echo json_encode($output);
+	}
+
 	public function GetByidVendor() {
 		if(isset($_GET['id_user'])) {
 			$id_user = $_GET['id_user'];
@@ -167,6 +275,25 @@ class PoslogApiVendor extends CI_Controller {
 				'condition' => true,
 				'message' => 'Data available',
 				'data' => $data['GetAllGender']
+			);
+		}else{
+			$output = array(
+				'condition' => false,
+				'message' => 'Data not available',
+				'data' => null
+			);
+		}
+
+		echo json_encode($output);
+	}
+
+	public function GetAllAsset() {
+		$data['GetAllAsset'] = $this->PoslogApiVendorModel->get_all_asset();
+		if($data['GetAllAsset'] != NULL) {
+			$output = array(
+				'condition' => true,
+				'message' => 'Data available',
+				'data' => $data['GetAllAsset']
 			);
 		}else{
 			$output = array(
@@ -342,6 +469,200 @@ class PoslogApiVendor extends CI_Controller {
 		header('Access-Control-Allow-Origin: *');
 		header('Access-Control-Allow-Method: PUT, GET, POST, DELETE, OPTIONS');
 		header('Access-Control-Allow-Headers: Content-Type, x-xsrf-token');
+		echo json_encode($output);
+	}
+
+	public function VehicleProcess() {
+		$postdata = file_get_contents("php://input");
+		$dataObject = json_decode($postdata);
+		$data = array(
+			'vendor_id' => $dataObject->vendor_id,
+			'vehicle_type' => $dataObject->vehicle_type,
+			'vehicle_brand' => $dataObject->vehicle_brand,
+			'vehicle_qty' => $dataObject->vehicle_qty,
+			'vehicle_year' => $dataObject->vehicle_year,
+			'type' => $dataObject->type,
+			'vehicle_payload' => $dataObject->vehicle_payload,
+			'vehicle_status' => $dataObject->vehicle_status,
+			'vehicle_history' => $dataObject->vehicle_history
+		);
+		$result = $this->PoslogApiVendorModel->insert_vehicle($data);
+		if($result == TRUE) {
+			$output = array(
+				'condition' => true,
+				'message' => 'Data kendaraan berhasil disimpan',
+				'data' => null
+			);
+		}else{
+			$output = array(
+				'condition' => false,
+				'message' => 'Data kendaraan gagal disimpan',
+				'data' => null
+			);
+		}
+
+		echo json_encode($output);
+	}
+
+	public function GeneralProcess() {
+		$postdata = file_get_contents("php://input");
+		$dataObject = json_decode($postdata);
+		$data = array(
+			'vendor_id' => $dataObject->vendor_id,
+			'general_type' => $dataObject->general_type,
+			'general_qty' => $dataObject->general_qty,
+			'general_status' => $dataObject->general_status
+		);
+		$result = $this->PoslogApiVendorModel->insert_general($data);
+		if($result == TRUE) {
+			$output = array(
+				'condition' => true,
+				'message' => 'Data general berhasil disimpan',
+				'data' => null
+			);
+		}else{
+			$output = array(
+				'condition' => false,
+				'message' => 'Data general gagal disimpan',
+				'data' => null
+			);
+		}
+
+		echo json_encode($output);
+	}
+
+	public function SertifikatProcess() {
+		$postdata = file_get_contents("php://input");
+		$dataObject = json_decode($postdata);
+		$data = array(
+			'vendor_id' => $dataObject->vendor_id,
+			'awards_type' => $dataObject->awards_type,
+			'awards_year' => $dataObject->awards_year,
+			'awards_num' => $dataObject->awards_num
+		);
+		$result = $this->PoslogApiVendorModel->insert_sertifikat($data);
+		if($result == TRUE) {
+			$output = array(
+				'condition' => true,
+				'message' => 'Data general berhasil disimpan',
+				'data' => null
+			);
+		}else{
+			$output = array(
+				'condition' => false,
+				'message' => 'Data general gagal disimpan',
+				'data' => null
+			);
+		}
+
+		echo json_encode($output);
+	}
+
+	public function DeleteVehile() {
+		if(isset($_GET['vehicle_id'])) {
+			$vehicle_id = $_GET['vehicle_id'];
+			if($vehicle_id != NULL) {
+				$result = $this->PoslogApiVendorModel->delete_vehicle($vehicle_id);
+				if($result == TRUE) {
+					$output = array(
+						'condition' => true,
+						'message' => 'Data kendaraan berhasil dihapus',
+						'data' => null
+					);
+				}else{
+					$output = array(
+						'condition' => false,
+						'message' => 'Data kendaraan gagal dihapus',
+						'data' => null
+					);
+				}
+			}else{
+				$output = array(
+					'condition' => false,
+					'message' => 'Wrong parameter',
+					'data' => null
+				);
+			}
+		}else{
+			$output = array(
+				'condition' => false,
+				'message' => 'Wrong parameter',
+				'data' => null
+			);
+		}
+
+		echo json_encode($output);
+	}
+
+	public function DeleteGeneral() {
+		if(isset($_GET['general_id'])) {
+			$general_id = $_GET['general_id'];
+			if($general_id != NULL) {
+				$result = $this->PoslogApiVendorModel->delete_general($general_id);
+				if($result == TRUE) {
+					$output = array(
+						'condition' => true,
+						'message' => 'Data general berhasil dihapus',
+						'data' => null
+					);
+				}else{
+					$output = array(
+						'condition' => false,
+						'message' => 'Data general gagal dihapus',
+						'data' => null
+					);
+				}
+			}else{
+				$output = array(
+					'condition' => false,
+					'message' => 'Wrong parameter',
+					'data' => null
+				);
+			}
+		}else{
+			$output = array(
+				'condition' => false,
+				'message' => 'Wrong parameter',
+				'data' => null
+			);
+		}
+
+		echo json_encode($output);
+	}
+
+	public function DeleteSertifikat() {
+		if(isset($_GET['awards_id'])) {
+			$awards_id = $_GET['awards_id'];
+			if($awards_id != NULL) {
+				$result = $this->PoslogApiVendorModel->delete_awards($awards_id);
+				if($result == TRUE) {
+					$output = array(
+						'condition' => true,
+						'message' => 'Data sertifikat berhasil dihapus',
+						'data' => null
+					);
+				}else{
+					$output = array(
+						'condition' => false,
+						'message' => 'Data sertifikat gagal dihapus',
+						'data' => null
+					);
+				}
+			}else{
+				$output = array(
+					'condition' => false,
+					'message' => 'Wrong parameter',
+					'data' => null
+				);
+			}
+		}else{
+			$output = array(
+				'condition' => false,
+				'message' => 'Wrong parameter',
+				'data' => null
+			);
+		}
+
 		echo json_encode($output);
 	}
 }

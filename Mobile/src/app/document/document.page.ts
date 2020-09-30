@@ -70,6 +70,8 @@ export class DocumentPage implements OnInit {
         this.Administration.vendor_id = Output.data.vendor_id;
       }else{
         this.Administration.vendor_id = '';
+        this.presentAlert('Daftarkan perusahaan anda terlebih dahulu di menu administrasi');
+        this.Router.navigate(['home']);
       }
     });
   }

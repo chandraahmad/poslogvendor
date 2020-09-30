@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button color="vendorposlog" text="" icon="close-circle-outline" defaultHref="/home"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="header-title">Kendaraan</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col size="12">
+            <ion-list>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Jenis Kendaraan *</ion-label>
+                    <ion-input type="text" [(ngModel)]="DataVehicle.vehicle_type"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Merek *</ion-label>
+                    <ion-input type="text" [(ngModel)]="DataVehicle.vehicle_brand"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Qty *</ion-label>
+                    <ion-input type="number" [(ngModel)]="DataVehicle.vehicle_qty"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Tahun *</ion-label>
+                    <ion-datetime display-format="YYYY" mode='ios' [(ngModel)]="DataVehicle.vehicle_year"></ion-datetime>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Type *</ion-label>
+                    <ion-input type="text" [(ngModel)]="DataVehicle.type"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Payload *</ion-label>
+                    <ion-input type="text" [(ngModel)]="DataVehicle.vehicle_payload"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Status *</ion-label>
+                    <ion-input type="text" [(ngModel)]="DataVehicle.vehicle_status"></ion-input>
+                </ion-item>
+                <ion-item lines="full">
+                    <ion-label style="color: black; font-size: 12px;" position="floating">Services History Terakhir *</ion-label>
+                    <ion-input type="text" [(ngModel)]="DataVehicle.vehicle_history"></ion-input>
+                </ion-item>
+                <ion-button expand="block" mode="ios" color="vendorposlog" (click)="VehicleProcess()">Save Kendaraan</ion-button>
+            </ion-list>
+        </ion-col>
+    </ion-row>
+</ion-content>

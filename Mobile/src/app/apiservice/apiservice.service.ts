@@ -43,6 +43,13 @@ export class ApiserviceService {
     })
   }
 
+  GetAllAsset() {
+    return new Promise((resolve, rejects) => {
+      this.httpClient.get(ApiUrl+'GetAllAsset/')
+      .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
+    })
+  }
+
   GetAllBusinessField() {
     return new Promise((resolve, rejects) => {
       this.httpClient.get(ApiUrl+'GetAllBusinessField/')
@@ -53,6 +60,27 @@ export class ApiserviceService {
   GetByidAllCategory(business_field_id) {
     return new Promise((resolve, rejects) => {
       this.httpClient.get(ApiUrl+'GetByidAllCategory?business_field_id='+business_field_id)
+      .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
+    })
+  }
+
+  GetByidAllVehicle(vendor_id) {
+    return new Promise((resolve, rejects) => {
+      this.httpClient.get(ApiUrl+'GetByidAllVehicle?vendor_id='+vendor_id)
+      .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
+    })
+  }
+
+  GetByidAllGeneral(vendor_id) {
+    return new Promise((resolve, rejects) => {
+      this.httpClient.get(ApiUrl+'GetByidAllGeneral?vendor_id='+vendor_id)
+      .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
+    })
+  }
+
+  GetByidAllSertifikat(vendor_id) {
+    return new Promise((resolve, rejects) => {
+      this.httpClient.get(ApiUrl+'GetByidAllSertifikat?vendor_id='+vendor_id)
       .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
     })
   }
@@ -81,6 +109,48 @@ export class ApiserviceService {
   AdministrationProcess(data) {
     return new Promise((resolve, rejects) => {
       this.httpClient.post(ApiUrl+'AdministrationProcess/', JSON.stringify(data))
+      .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
+    })
+  }
+
+  VehicleProcess(data) {
+    return new Promise((resolve, rejects) => {
+      this.httpClient.post(ApiUrl+'VehicleProcess/', JSON.stringify(data))
+      .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
+    })
+  }
+
+  GeneralProcess(data) {
+    return new Promise((resolve, rejects) => {
+      this.httpClient.post(ApiUrl+'GeneralProcess/', JSON.stringify(data))
+      .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
+    })
+  }
+
+  SertifikatProcess(data) {
+    return new Promise((resolve, rejects) => {
+      this.httpClient.post(ApiUrl+'SertifikatProcess/', JSON.stringify(data))
+      .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
+    })
+  }
+
+  DeleteVehile(vehicle_id) {
+    return new Promise((resolve, rejects) => {
+      this.httpClient.get(ApiUrl+'DeleteVehile?vehicle_id='+vehicle_id)
+      .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
+    })
+  }
+
+  DeleteGeneral(general_id) {
+    return new Promise((resolve, rejects) => {
+      this.httpClient.get(ApiUrl+'DeleteGeneral?general_id='+general_id)
+      .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
+    })
+  }
+
+  DeleteSertifikat(awards_id) {
+    return new Promise((resolve, rejects) => {
+      this.httpClient.get(ApiUrl+'DeleteSertifikat?awards_id='+awards_id)
       .subscribe(data => {resolve(data)}, err => {this.PresentToast(err.name); this.loadingCtrl.dismiss();})
     })
   }

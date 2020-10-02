@@ -84,6 +84,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>User</th>
                       <th>Aktifitas</th>
                       <th>Waktu</th>
@@ -91,24 +92,26 @@
                   </thead>
                   <tfoot>
                     <tr>
+                      <th>No</th>
                       <th>User</th>
                       <th>Aktifitas</th>
                       <th>Waktu</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <?php 
+                    <?php $no = 1;
                     foreach($log->result_array() as $i):
                       $fullname=$i['fullname'];
                       $log_desc=$i['log_desc'];
                       $log_time=$i['log_time'];                      
                     ?>
                     <tr>
+                      <td><?php echo $no;?></td>
                       <td><?php echo $fullname;?></td>
                       <td><?php echo $log_desc;?></td>
                       <td><?php echo $log_time;?></td>
                     </tr>
-                    <?php endforeach; ?>
+                    <?php $no++; endforeach; ?>
                   </tbody>
                 </table>
               </div>

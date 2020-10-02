@@ -128,60 +128,60 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" readonly value="<?= $mitra['doc_file'] ?>" placeholder="Surat Permohonan Menjadi Mitra Kerja Poslog">
                     <div class="input-group-append">
-                        <?php if(empty($mitra['doc_file'])) {
-                            echo '<button data-toggle="modal" data-target="#modal_add_mitra" class="btn btn-primary" type="button">Upload</button>
-                            <a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        } else{
-                            echo '<a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        }?>
+                        <?php if(empty($mitra['doc_file'])) : ?>
+                            <button data-toggle="modal" data-target="#modal_add_mitra" class="btn btn-primary" type="button">Upload</button>
+                            <a href="<?= base_url() ?>assets/form/<?= $fmitra['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php else : ?>
+                            <a href="<?= base_url() ?>assets/form/<?= $fmitra['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php endif; ?>
                     </div>
                 </div>   
                 
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" readonly value="<?= $pernyataan['doc_file'] ?>" placeholder="Surat Pernyataan">
                     <div class="input-group-append">
-                        <?php if(empty($pernyataan['doc_file'])) {
-                            echo '<button data-toggle="modal" data-target="#modal_add_mitra" class="btn btn-primary" type="button">Upload</button>
-                            <a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        } else{
-                            echo '<a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        }?>
+                        <?php if(empty($pernyataan['doc_file'])) : ?>
+                            <button data-toggle="modal" data-target="#modal_add_mitra" class="btn btn-primary" type="button">Upload</button>
+                            <a href="<?= base_url() ?>assets/form/<?= $fpernyataan['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php else : ?>
+                            <a href="<?= base_url() ?>assets/form/<?= $fpernyataan['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php endif; ?>
                     </div>
                 </div>
 
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" readonly value="<?= $pi['doc_file'] ?>" placeholder="Surat Pakta Integritas">
                     <div class="input-group-append">
-                        <?php if(empty($pi['doc_file'])) {
-                            echo '<button data-toggle="modal" data-target="#modal_add_mitra" class="btn btn-primary" type="button">Upload</button>
-                            <a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        } else{
-                            echo '<a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        }?>
+                        <?php if(empty($pi['doc_file'])) : ?>
+                            <button data-toggle="modal" data-target="#modal_add_mitra" class="btn btn-primary" type="button">Upload</button>
+                            <a href="<?= base_url() ?>assets/form/<?= $fpi['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php else : ?>
+                            <a href="<?= base_url() ?>assets/form/<?= $fpi['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php endif; ?>
                     </div>
                 </div>
 
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" readonly value="<?= $ptpp['doc_file'] ?>" placeholder="Surat Pernyataan tidak dalam pengawasan pengadilan">
                     <div class="input-group-append">
-                        <?php if(empty($ptpp['doc_file'])) {
-                            echo '<button data-toggle="modal" data-target="#modal_add_mitra" class="btn btn-primary" type="button">Upload</button>
-                            <a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        } else{
-                            echo '<a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        }?>
+                        <?php if(empty($ptpp['doc_file'])) : ?>
+                            <button data-toggle="modal" data-target="#modal_add_mitra" class="btn btn-primary" type="button">Upload</button>
+                            <a href="<?= base_url() ?>assets/form/<?= $fptpp['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php else : ?>
+                            <a href="<?= base_url() ?>assets/form/<?= $fptpp['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php endif; ?>
                     </div>
                 </div>
 
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" readonly value="<?= $kemampuan['doc_file'] ?>" placeholder="Surat pernyataan Memiliki kemampuan menyediakan Fasilitas, peralatan serta personil">
                     <div class="input-group-append">
-                        <?php if(empty($kemampuan['doc_file'])) {
-                            echo '<button data-toggle="modal" data-target="#modal_add_mitra" class="btn btn-primary" type="button">Upload</button>
-                            <a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        } else{
-                            echo '<a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        }?>
+                        <?php if(empty($kemampuan['doc_file'])) : ?>
+                            <button data-toggle="modal" data-target="#modal_add_mitra" class="btn btn-primary" type="button">Upload</button>
+                            <a href="<?= base_url() ?>assets/form/<?= $fkemampuan['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php else : ?>
+                            <a href="<?= base_url() ?>assets/form/<?= $fkemampuan['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -197,12 +197,12 @@
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" readonly value="<?= $csms['doc_file'] ?>" placeholder="Formulir CSMS">
                     <div class="input-group-append">
-                        <?php if(empty($csms['doc_file'])) {
-                            echo '<button data-toggle="modal" data-target="#modal_add_csms" class="btn btn-primary" type="button">Upload</button>
-                            <a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        } else{
-                            echo '<a href="#" target="blank" class="btn btn-success" type="button">Download</a>';
-                        }?>
+                        <?php if(empty($csms['doc_file'])) : ?>
+                            <button data-toggle="modal" data-target="#modal_add_csms" class="btn btn-primary" type="button">Upload</button>
+                            <a href="<?= base_url() ?>assets/form/<?= $fcsms['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php else : ?>
+                            <a href="<?= base_url() ?>assets/form/<?= $fcsms['form_file'] ?>" target="blank" class="btn btn-success" type="button">Download</a>
+                        <?php endif; ?>
                     </div>
                 </div>   
                 
@@ -254,7 +254,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -282,7 +282,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -310,7 +310,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -338,7 +338,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -365,7 +365,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -393,7 +393,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -421,7 +421,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -449,7 +449,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -477,7 +477,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -505,7 +505,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -533,7 +533,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -561,7 +561,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -589,7 +589,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -617,7 +617,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -645,7 +645,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -673,7 +673,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -729,7 +729,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -757,7 +757,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -785,7 +785,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -813,7 +813,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -840,7 +840,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -868,7 +868,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -896,7 +896,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -924,7 +924,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>
@@ -952,7 +952,7 @@
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="doc_file" name="doc_file">
                             <label class="custom-file-label" for="doc_file">Pilih file</label>
-                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                            <small id="doc_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                         </div>
         
                         </div>

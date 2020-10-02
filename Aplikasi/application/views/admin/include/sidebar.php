@@ -41,6 +41,12 @@
           <i class="fas fa-fw fa-folder-open"></i>
           <span>Dokumen Vendor</span></a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('index.php/admin/main/form'); ?>">
+          <i class="fas fa-fw fa-file"></i>
+          <span>Form Isian Vendor</span></a>
+      </li>
       
       <!-- Divider -->
       <hr class="sidebar-divider">

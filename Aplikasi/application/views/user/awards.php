@@ -5,7 +5,7 @@
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <!-- <h4 class="font-weight-bold text-primary">Kendaraan</h4> -->
-              <a data-toggle="modal" data-target="#modal_add_new" class="btn btn-sm btn-success float-right" style="color: white;">
+              <a data-toggle="modal" data-target="#modal_awards" class="btn btn-sm btn-success float-right" style="color: white;">
                 <i class="fas fa-plus"></i>
                 Tambah
               </a>
@@ -45,7 +45,7 @@
                       <td><?php echo $awards_type;?></td>
                       <td><?php echo $awards_year;?></td>
                       <td><?php echo $awards_num;?></td>
-                      <td class="text-center"><a data-toggle="modal" data-target="#modal_edit<?php echo $awards_id; ?>" style="color: white;" class="btn btn-sm btn-warning btn-flat"><i class="fas fa-edit"></i> Edit</a> <a href="<?= base_url('index.php/user/main/hapus_awards/' . $awards_id); ?>" style="color: white;" class="btn btn-sm btn-info btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a></td>
+                      <td class="text-center"><a data-toggle="modal" data-target="#modal_edit_awards<?php echo $awards_id; ?>" style="color: white;" class="btn btn-sm btn-warning btn-flat"><i class="fas fa-edit"></i> Edit</a> <a href="<?= base_url('index.php/user/main/hapus_awards/' . $awards_id); ?>" style="color: white;" class="btn btn-sm btn-info btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a></td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>
@@ -55,11 +55,11 @@
           </div>
 
           <!-- ============ MODAL ADD =============== -->
-        <div class="modal fade" id="modal_add_new" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+        <div class="modal fade" id="modal_awards" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="modal_add_new">Tambah Data</h3>
+                <h3 class="modal-title" id="modal_awards">Tambah Data</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>                
             </div>
             <form id="modal-awards" method="post" enctype="multipart/form-data">
@@ -80,7 +80,7 @@
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="awards_file" name="awards_file">
                     <label class="custom-file-label" for="awards_file">Pilih file</label>
-                    <small id="awards_file" class="form-text text-muted">File berbentuk PDF/Doc/Docx maksimal 10MB</small>
+                    <small id="awards_file" class="form-text text-muted">File berbentuk PDF maksimal 10MB</small>
                 </div>
  
                 </div>
@@ -106,11 +106,11 @@
             $awards_num=$i['awards_num'];
             $awards_file=$i['awards_file'];
         ?>
-        <div class="modal fade" id="modal_edit<?php echo $awards_id;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+        <div class="modal fade" id="modal_edit_awards<?php echo $awards_id;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="modal_edit">Edit Data</h3>
+                <h3 class="modal-title" id="modal_edit_awards">Edit Data</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             </div>
             <form id="modal-edit-awards" method="post" enctype="multipart/form-data">

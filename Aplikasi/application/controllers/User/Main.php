@@ -13,24 +13,84 @@ class Main extends CI_Controller {
 			redirect(base_url("index.php/main/logout"));
         }
         $this->load->library('parser');
-		$this->load->helper('directory');
+        $this->load->helper('directory');
+        
 	}
 	public function index()
 	{
-        $data['dokumen'] = $this->db->query("SELECT COUNT(*) AS jumlah from document")->row_array();
-        $data['kendaraan'] = $this->db->query("SELECT COUNT(*) AS jumlah from vehicle")->row_array();
-        $data['general'] = $this->db->query("SELECT COUNT(*) AS jumlah from general")->row_array();
-        $data['awards'] = $this->db->query("SELECT COUNT(*) AS jumlah from awards")->row_array();
+        $id_user = $this->session->userdata('id_user');  
+        $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array(); 
+        $vendor_id = $query['vendor_id'];
+
+        // $data['dokumen1'] = $this->db->query("SELECT COUNT(*) AS jumlah from document")->row_array();
+        // $data['kendaraan1'] = $this->db->query("SELECT COUNT(*) AS jumlah from vehicle")->row_array();
+        // $data['general1'] = $this->db->query("SELECT COUNT(*) AS jumlah from general")->row_array();
+        // $data['awards1'] = $this->db->query("SELECT COUNT(*) AS jumlah from awards")->row_array();
+
+        $data['logo'] = $this->db->query("SELECT doc_file FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Logo Perusahaan'")->row_array();
+        
+        //Legalitas Perusahaan
+        $data['akta'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Akta pendirian perusahaan'")->row_array();
+        $data['kemenkumham'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Pengesahan Kemenkumham'")->row_array();
+        $data['siup'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Surat Ijin Usaha'")->row_array();
+        $data['tdp'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'TDP'")->row_array();
+        $data['npwp'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'NPWP'")->row_array();
+        $data['sppkp'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'SPPKP'")->row_array();
+        $data['situ'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Surat Izin Tempat Usaha'")->row_array();
+
+        //Referensi Bank
+        $data['ref'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Referensi Bank'")->row_array();
+        $data['audit'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Laporan Keuangan Perusahaan 2 tahun terakhir'")->row_array();
+
+        //Surat Pernyataan
+        $data['mitra'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Surat Permohonan Menjadi Mitra Kerja Poslog'")->row_array();
+        $data['pernyataan'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Surat Pernyataan'")->row_array();
+        $data['pi'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Surat Pakta Integritas'")->row_array();
+        $data['ptpp'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Surat Pernyataan tidak dalam pengawasan pengadilan'")->row_array();
+        $data['kemampuan'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Surat pernyataan Memiliki kemampuan menyediakan Fasilitas'")->row_array();
+
+        //CSMS Vendor
+        $data['csms'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Formulir CSMS'")->row_array();
+
+        //Company Profile
+        $data['cp'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Company Profile'")->row_array();
+        $data['logo'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Logo Perusahaan'")->row_array();
+
+        $data['vendor'] = $this->db->query("SELECT * FROM vendor WHERE vendor_id = '$vendor_id'")->row_array();
+        $data['kendaraan'] = $this->db->query("SELECT * FROM vehicle WHERE vendor_id = '$vendor_id'")->row_array();
+        $data['general'] = $this->db->query("SELECT * FROM general WHERE vendor_id = '$vendor_id'")->row_array();
+        $data['awards'] = $this->db->query("SELECT * FROM awards WHERE vendor_id = '$vendor_id'")->row_array();
+
+
 		$data['view'] = 'user/dashboard';
 		$this->load->view('user/layout', $data);
     }
     
 	public function administrasi()
 	{
+        $id_user = $this->session->userdata('id_user');  
+        $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array(); 
+        $vendor = $query['vendor_id'];
+        if(empty($vendor)){
+            $data['business_field'] = $this->db->query("SELECT * FROM business_field")->result();
+            $data['category'] = $this->db->query("SELECT * FROM category")->result();
+            $data['view'] = 'user/administrasi';
+            $this->load->view('user/layout', $data);
+        } else {
+            redirect(base_url("index.php/user/main/list_admin"));
+        }
+        
+    }
+
+    public function list_admin()
+    {
+        $id_user = $this->session->userdata('id_user');  
+        $data['vendor'] = $this->db->query("SELECT * from vendor JOIN business_field ON vendor.business_field_id = business_field.business_field_id
+                                            JOIN category ON vendor.category_id = category.category_id WHERE id_user = '$id_user'");
         $data['business_field'] = $this->db->query("SELECT * FROM business_field")->result();
         $data['category'] = $this->db->query("SELECT * FROM category")->result();
-		$data['view'] = 'user/administrasi';
-		$this->load->view('user/layout', $data);
+        $data['view'] = 'user/list_admin';
+        $this->load->view('user/layout', $data);
     }
 
 	public function dokumen()
@@ -65,6 +125,14 @@ class Main extends CI_Controller {
         //Company Profile
         $data['cp'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Company Profile'")->row_array();
         $data['logo'] = $this->db->query("SELECT * FROM document WHERE vendor_id = '$vendor_id' AND doc_type LIKE 'Logo Perusahaan'")->row_array();
+
+        //Form Isian
+        $data['fmitra'] = $this->db->query("SELECT form_file FROM form WHERE form_name LIKE 'Surat Permohonan Menjadi Mitra'")->row_array();
+        $data['fpernyataan'] = $this->db->query("SELECT form_file FROM form WHERE form_name LIKE 'Surat Pernyataan'")->row_array();
+        $data['fpi'] = $this->db->query("SELECT form_file FROM form WHERE form_name LIKE 'Surat Pakta Integritas'")->row_array();
+        $data['fptpp'] = $this->db->query("SELECT form_file FROM form WHERE form_name LIKE 'Surat Pernyataan Tidak Dalam Pengawasan Pengadilan'")->row_array();
+        $data['fkemampuan'] = $this->db->query("SELECT form_file FROM form WHERE form_name LIKE 'Surat Pernyataan Memiliki Kemampuan Fasilitas'")->row_array();
+        $data['fcsms'] = $this->db->query("SELECT form_file FROM form WHERE form_name LIKE 'Formulir CSMS'")->row_array();
 
 		$data['view'] = 'user/dokumen';
 		$this->load->view('user/layout', $data);
@@ -126,7 +194,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -147,6 +215,7 @@ class Main extends CI_Controller {
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Akta pendirian perusahaan",
 				'doc_file' => $this->upload->data("file_name"),
+				'doc_category' => 1,
 				'doc_status' => 1
             );
             $log = array(
@@ -179,7 +248,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -199,7 +268,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Pengesahan Kemenkumham",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 1,
 				'doc_status' => 1
             );
             $log = array(
@@ -232,7 +302,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -252,7 +322,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Surat Ijin Usaha",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 1,
 				'doc_status' => 1
             );
             $log = array(
@@ -285,7 +356,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -305,7 +376,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "TDP",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 1,
 				'doc_status' => 1
             );
             $log = array(
@@ -338,7 +410,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -358,7 +430,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "NPWP",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 1,
 				'doc_status' => 1
             );
             $log = array(
@@ -391,7 +464,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -411,7 +484,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "SPPKP",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 1,
 				'doc_status' => 1
             );
             $log = array(
@@ -444,7 +518,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -464,7 +538,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Surat Izin Tempat Usaha",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 1,
 				'doc_status' => 1
             );
             $log = array(
@@ -497,7 +572,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -517,7 +592,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Referensi Bank",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 2,
 				'doc_status' => 1
             );
             $log = array(
@@ -550,7 +626,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -570,7 +646,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Laporan Keuangan Perusahaan 2 tahun terakhir",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 2,
 				'doc_status' => 1
             );
             $log = array(
@@ -603,7 +680,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -623,7 +700,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Surat Permohonan Menjadi Mitra Kerja Poslog",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 3,
 				'doc_status' => 1
             );
             $log = array(
@@ -656,7 +734,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -676,7 +754,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Surat Pernyataan",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 3,
 				'doc_status' => 1
             );
             $log = array(
@@ -709,7 +788,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -729,7 +808,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Surat Pakta Integritas",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 3,
 				'doc_status' => 1
             );
             $log = array(
@@ -762,7 +842,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -782,7 +862,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Surat Pernyataan tidak dalam pengawasan pengadilan",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 3,
 				'doc_status' => 1
             );
             $log = array(
@@ -815,7 +896,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -835,7 +916,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Surat pernyataan Memiliki kemampuan menyediakan Fasilitas",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 3,
 				'doc_status' => 1
             );
             $log = array(
@@ -868,7 +950,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -888,7 +970,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Formulir CSMS",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 4,
 				'doc_status' => 1
             );
             $log = array(
@@ -921,7 +1004,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -941,7 +1024,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Company Profile",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 5,
 				'doc_status' => 1
             );
             $log = array(
@@ -974,7 +1058,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'jpg|jpeg|png';
         $config['max_size']             = 10000;
         
 
@@ -994,7 +1078,8 @@ class Main extends CI_Controller {
 				'doc_id' => "",
 				'vendor_id' => $query['vendor_id'],
 				'doc_type' => "Logo Perusahaan",
-				'doc_file' => $this->upload->data("file_name"),
+                'doc_file' => $this->upload->data("file_name"),
+                'doc_category' => 5,
 				'doc_status' => 1
             );
             $log = array(
@@ -1027,7 +1112,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -1075,7 +1160,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -1123,7 +1208,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -1171,7 +1256,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -1219,7 +1304,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -1267,7 +1352,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -1315,7 +1400,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -1363,7 +1448,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -1411,7 +1496,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/dokumen';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -1654,7 +1739,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/awards';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -1707,7 +1792,7 @@ class Main extends CI_Controller {
         $query = $this->db->query("SELECT vendor_id from vendor WHERE id_user = '$id_user'")->row_array();
 
         $config['upload_path']          = './assets/awards';
-		$config['allowed_types']        = 'pdf|doc|docx';
+		$config['allowed_types']        = 'pdf';
         $config['max_size']             = 10000;
         
 
@@ -1729,7 +1814,7 @@ class Main extends CI_Controller {
             $awards_type = $this->input->post('awards_type');
             $awards_year = $this->input->post('awards_year');
             $awards_num = $this->input->post('awards_num');
-            $awards_num = $this->upload->data("file_name");
+            $awards_file = $this->upload->data("file_name");
 
             $log = array(
                 'log_id' => "",
@@ -1756,7 +1841,7 @@ class Main extends CI_Controller {
         echo json_encode($output);
     }
 
-    function hapus_awards($awards_id){
+    public function hapus_awards($awards_id){
         $file = $this->db->query("SELECT awards_file FROM awards WHERE awards_id = '$awards_id'")->row_array();
 		$f = $file['awards_file'];
         unlink("./assets/awards/$f");
@@ -1771,5 +1856,102 @@ class Main extends CI_Controller {
         $this->user_model->log($log,'log');
 		$this->user_model->hapus_kendaraan($where,'awards');
 		redirect(base_url("index.php/user/main/awards"));
+    }
+
+    public function user()
+    {
+        $this->load->model('LoginModel');
+
+        $id_user = $this->session->userdata('id_user');  
+        $data['user'] = $this->db->query("SELECT * from user WHERE id_user = '$id_user'"); 
+        $data['GetAllGender'] = $this->LoginModel->GetAllGender();
+        $data['view'] = 'user/user';
+		$this->load->view('user/layout', $data);
+    }
+
+    public function edit_user()
+    {
+        $this->form_validation->set_rules('id_user','User ID','required|trim');
+        $this->form_validation->set_rules('fullname','Nama Lengkap','required|trim');
+		$this->form_validation->set_rules('gender','Jenis Kelamin','required|trim');
+		$this->form_validation->set_rules('email','E-mail','required|trim');
+		$this->form_validation->set_rules('job_title','Jabatan','required|trim');
+ 
+		if($this->form_validation->run() != false){
+            date_default_timezone_set('Asia/Jakarta');
+			$id_user = $this->input->post('id_user');
+			$fullname = $this->input->post('fullname');
+			$gender = $this->input->post('gender');
+			$email = $this->input->post('email');
+            $job_title = $this->input->post('job_title');
+            $update_time = date("Y-m-d H:i:s");
+
+                $log = array(
+                    'log_id' => "",
+                    'id_user' => $this->session->userdata('id_user'),
+                    'log_desc' => "User mengubah data user",
+                    'log_time' => date("Y-m-d H:i:s")
+                );
+
+                $this->db->query("UPDATE user SET fullname = '$fullname', gender = '$gender', 
+                                    email = '$email', job_title = '$job_title', update_time = '$update_time' WHERE id_user = '$id_user'");
+            $this->user_model->log($log,'log');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data diri anda berhasil dirubah</div>');
+            redirect(base_url("index.php/user/main/user"));
+		}else{
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Data diri anda gagal dirubah</div>');
+            redirect(base_url("index.php/user/main/user"));
+		}
+    }
+    public function password()
+    {
+        $data['view'] = 'user/password';
+		$this->load->view('user/layout', $data);
+    }
+
+    public function edit_password()
+    {
+        $this->form_validation->set_rules('id_user','User ID','required|trim');
+        $this->form_validation->set_rules('password1','Password Sekarang','required|trim');
+		$this->form_validation->set_rules('password2','Password Baru','required|trim');
+		$this->form_validation->set_rules('password3','Ulangi Password Baru','required|trim');
+ 
+		if($this->form_validation->run() != false){
+            date_default_timezone_set('Asia/Jakarta');
+			$id_user = $this->input->post('id_user');
+            $password1 = md5($this->input->post('password1'));
+			$password2 = md5($this->input->post('password2'));
+			$password3 = md5($this->input->post('password3'));
+            $update_time = date("Y-m-d H:i:s");
+            $query = $this->db->query("SELECT password from user WHERE id_user = '$id_user'")->row_array();
+            $cek = $query['password'];
+            // var_dump($cek);
+            // die();
+
+                $log = array(
+                    'log_id' => "",
+                    'id_user' => $this->session->userdata('id_user'),
+                    'log_desc' => "User mengubah password user",
+                    'log_time' => date("Y-m-d H:i:s")
+                );
+            if ($cek == $password1) {
+                if ($password2 == $password3) {
+                    $this->db->query("UPDATE user SET password = '$password2' WHERE id_user = '$id_user'");
+                    $this->user_model->log($log,'log');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password anda berhasil dirubah</div>');
+                    redirect(base_url("index.php/user/main/password"));
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password baru tidak sama</div>');
+                    redirect(base_url("index.php/user/main/password"));
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password tidak sesuai</div>');
+                redirect(base_url("index.php/user/main/password"));
+            }
+            
+		}else{
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password gagal dirubah</div>');
+            redirect(base_url("index.php/user/main/password"));
+		}
     }
 }

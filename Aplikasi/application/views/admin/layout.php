@@ -120,6 +120,63 @@
   <script src="<?php echo base_url(); ?>assets/dist/js/bootstrap-select.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/dist/js/i18n/defaults-*.min.js"></script>
 
+  <script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+  </script>
+
+  <!-- AJAX FORM -->
+  <script type="text/javascript">
+        $(document).on('submit', '#modal-add-new', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/Admin/main/add_form') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+                var out = jQuery.parseJSON(data);
+                if (out.status == true) {
+                    if(window.confirm(out.message)) {
+                        window.location.replace("<?= base_url('index.php/Admin/main/form') ?>");
+                    }
+                } else {
+                    window.confirm(out.message);
+                }
+            })
+            a.preventDefault();
+        });
+    </script>
+
+    <!-- AJAX EDIT FORM -->
+    <script type="text/javascript">
+        $(document).on('submit', '#modal-edit', function(a){
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+            method: 'POST',
+            url: "<?= base_url('index.php/Admin/main/edit_form') ?>",
+            data: formData,
+            processData: false,
+            contentType: false
+            }).done(function(data) {
+              window.location.replace("<?= base_url('index.php/Admin/main/form') ?>");
+                // var out = jQuery.parseJSON(data);
+                // if (out.status == true) {
+                //     if(window.confirm(out.message)) {
+                //         window.location.replace("<?= base_url('index.php/User/main/form') ?>");
+                //     }
+                // } else {
+                //     window.confirm(out.message);
+                // }
+            })
+            a.preventDefault();
+        });
+    </script>
+
 </body>
 
 </html>

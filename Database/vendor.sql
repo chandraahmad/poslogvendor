@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2020 at 07:53 PM
+-- Generation Time: Oct 03, 2020 at 01:03 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -52,7 +52,7 @@ CREATE TABLE `awards` (
   `awards_id` int(35) NOT NULL,
   `vendor_id` varchar(30) NOT NULL,
   `awards_type` varchar(35) NOT NULL,
-  `awards_year` tinyint(4) NOT NULL,
+  `awards_year` int(15) NOT NULL,
   `awards_num` text NOT NULL,
   `awards_file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -134,6 +134,7 @@ CREATE TABLE `document` (
   `vendor_id` varchar(30) NOT NULL,
   `doc_type` varchar(100) NOT NULL,
   `doc_file` text NOT NULL,
+  `doc_category` tinyint(3) NOT NULL,
   `doc_status` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -141,8 +142,39 @@ CREATE TABLE `document` (
 -- Dumping data for table `document`
 --
 
-INSERT INTO `document` (`doc_id`, `vendor_id`, `doc_type`, `doc_file`, `doc_status`) VALUES
-(6, 'VENDOR260920200001', 'Surat Izin Tempat Usaha', 'pegawai1.pdf', 1);
+INSERT INTO `document` (`doc_id`, `vendor_id`, `doc_type`, `doc_file`, `doc_category`, `doc_status`) VALUES
+(7, 'VENDOR280920200001', 'Akta pendirian perusahaan', 'pegawai.pdf', 1, 1),
+(8, 'VENDOR290920200002', 'Akta pendirian perusahaan', 'PROC01-Prosedur_Pendaftaran_dan_Kualifikasi_LATESTREV10.docx', 1, 2),
+(9, 'VENDOR290920200002', 'Pengesahan Kemenkumham', 'pegawai2.pdf', 1, 2),
+(10, 'VENDOR290920200002', 'Surat Ijin Usaha', 'PROC01-Prosedur_Pendaftaran_dan_Kualifikasi_LATESTREV.docx', 1, 2),
+(11, 'VENDOR290920200002', 'TDP', 'PROC01-Prosedur_Pendaftaran_dan_Kualifikasi_LATESTREV1.docx', 1, 2),
+(12, 'VENDOR290920200002', 'NPWP', 'PROC01-Prosedur_Pendaftaran_dan_Kualifikasi_LATESTREV2.docx', 1, 2),
+(13, 'VENDOR290920200002', 'SPPKP', 'PROC01-Prosedur_Pendaftaran_dan_Kualifikasi_LATESTREV3.docx', 1, 2),
+(14, 'VENDOR290920200002', 'Surat Izin Tempat Usaha', 'PROC01-Prosedur_Pendaftaran_dan_Kualifikasi_LATESTREV4.docx', 1, 2),
+(15, 'VENDOR290920200002', 'Referensi Bank', 'PROC01-Prosedur_Pendaftaran_dan_Kualifikasi_LATESTREV5.docx', 2, 1),
+(16, 'VENDOR290920200002', 'Laporan Keuangan Perusahaan 2 tahun terakhir', 'PROC01-Prosedur_Pendaftaran_dan_Kualifikasi_LATESTREV6.docx', 2, 1),
+(17, 'VENDOR290920200002', 'Surat Permohonan Menjadi Mitra Kerja Poslog', 'PROC01-Prosedur_Pendaftaran_dan_Kualifikasi_LATESTREV7.docx', 3, 1),
+(21, 'VENDOR290920200002', 'Formulir CSMS', 'pegawai3.pdf', 4, 1),
+(22, 'VENDOR290920200002', 'Company Profile', 'pegawai4.pdf', 5, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `form`
+--
+
+CREATE TABLE `form` (
+  `form_id` int(11) NOT NULL,
+  `form_name` varchar(35) NOT NULL,
+  `form_file` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `form`
+--
+
+INSERT INTO `form` (`form_id`, `form_name`, `form_file`) VALUES
+(3, 'Surat Permohonan Menjadi Mitra', 'Surat_Permohonan_Menjadi_Mitra.docx');
 
 -- --------------------------------------------------------
 
@@ -195,8 +227,37 @@ CREATE TABLE `log` (
 --
 
 INSERT INTO `log` (`log_id`, `id_user`, `log_desc`, `log_time`) VALUES
-(2, 'USER260920200001', 'User menambahkan data administrasi vendor', '2020-09-26 18:55:27'),
-(3, 'USER260920200001', 'User menambahkan data administrasi vendor', '2020-09-26 19:00:38');
+(1, 'USER260920200001', 'User menambahkan Akta pendirian perusahaan', '2020-09-28 19:41:15'),
+(2, 'USER280920200001', 'BOD menyutujui PT. Jomblo', '2020-09-28 20:05:46'),
+(3, 'USER290920200001', 'User menambahkan data administrasi vendor', '2020-09-29 14:16:45'),
+(4, 'USER290920200001', 'User menambahkan Akta pendirian perusahaan', '2020-09-29 09:18:13'),
+(5, 'USER290920200001', 'User menambahkan Pengesahan Kemenkumham', '2020-09-29 09:19:06'),
+(6, 'USER290920200001', 'User menambahkan Surat Ijin Usaha', '2020-09-29 09:19:27'),
+(7, 'USER290920200001', 'User menambahkan TDP', '2020-09-29 09:20:14'),
+(8, 'USER290920200001', 'User menambahkan NPWP', '2020-09-29 09:20:22'),
+(9, 'USER290920200001', 'User menambahkan SPPKP', '2020-09-29 09:20:31'),
+(10, 'USER290920200001', 'User menambahkan Surat Izin Tempat Usaha', '2020-09-29 09:22:55'),
+(11, 'USER290920200001', 'User menambahkan Referensi Bank', '2020-09-29 09:23:07'),
+(12, 'USER290920200001', 'User menambahkan Laporan Keuangan Perusahaan 2 tahun terakhir', '2020-09-29 09:23:20'),
+(13, 'USER290920200001', 'User menambahkan Surat Permohonan Menjadi Mitra Kerja Poslog', '2020-09-29 09:24:07'),
+(14, 'USER290920200001', 'User menambahkan Formulir CSMS', '2020-09-29 09:24:59'),
+(15, 'USER290920200001', 'User menambahkan Surat Permohonan Menjadi Mitra Kerja Poslog', '2020-09-29 09:25:12'),
+(16, 'USER290920200001', 'User mengedit Akta Perusahaan', '2020-09-29 09:25:52'),
+(17, 'USER290920200001', 'User menambahkan data asset kendaraan', '2020-09-29 09:26:19'),
+(18, 'USER290920200001', 'User update data asset kendaraan', '2020-09-29 09:26:39'),
+(19, 'USER290920200001', 'User hapus data asset kendaraan', '2020-09-29 09:26:42'),
+(20, 'USER280920200001', 'BOD menyutujui PT. Contoh', '2020-09-29 09:28:14'),
+(21, 'USER280920200001', 'BOD menyutujui dokumen Akta pendirian perusahaan PT. Contoh', '2020-09-29 09:38:24'),
+(22, 'USER280920200001', 'BOD menyutujui dokumen Legalitas Perusahaan PT. Contoh', '2020-10-02 14:12:44'),
+(23, 'USER290920200001', 'User menambahkan Company Profile', '2020-10-02 14:41:39'),
+(24, 'USER280920200001', 'BOD menambahkan Form isian', '2020-10-02 15:50:13'),
+(25, 'USER280920200001', 'BOD menambahkan Form isian', '2020-10-02 15:52:36'),
+(26, 'USER280920200001', 'BOD edit Form isian', '2020-10-02 15:56:30'),
+(27, 'USER280920200001', 'BOD menghapus form Surat Permohonan Menjadi Mitra', '2020-10-02 15:56:43'),
+(28, 'USER280920200001', 'BOD menambahkan Form isian', '2020-10-02 16:17:34'),
+(29, 'USER290920200001', 'User menambahkan Formulir CSMS', '2020-10-02 19:59:57'),
+(30, 'USER290920200001', 'User menambahkan Company Profile', '2020-10-02 20:00:11'),
+(31, 'USER290920200001', 'User mengubah data user', '2020-10-03 05:07:58');
 
 -- --------------------------------------------------------
 
@@ -222,7 +283,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `level_id`, `fullname`, `gender`, `email`, `password`, `last_login`, `create_time`, `update_time`, `job_title`) VALUES
-('USER260920200001', 2, 'test', 'Laki-laki', 'test@gmail.com', '202cb962ac59075b964b07152d234b70', NULL, '2020-09-26 16:53:18', NULL, '');
+('USER260920200001', 2, 'test', 'Laki-laki', 'test@gmail.com', '202cb962ac59075b964b07152d234b70', '2020-09-29 14:12:33', '2020-09-26 16:53:18', NULL, ''),
+('USER280920200001', 1, 'Admin', 'Laki-laki', 'admin@gmail.com', '202cb962ac59075b964b07152d234b70', '2020-10-03 05:43:31', '2020-09-28 20:13:51', NULL, ''),
+('USER290920200001', 2, 'Robert Aritonang', 'Laki-laki', 'robert.aritonang@poslogistics.co.id', '202cb962ac59075b964b07152d234b70', '2020-10-03 05:44:31', '2020-09-29 14:14:46', '2020-10-03 05:07:58', 'CTO');
 
 -- --------------------------------------------------------
 
@@ -236,7 +299,7 @@ CREATE TABLE `vehicle` (
   `vehicle_type` varchar(35) NOT NULL,
   `vehicle_brand` varchar(40) NOT NULL,
   `vehicle_qty` int(15) NOT NULL,
-  `vehicle_year` tinyint(4) NOT NULL,
+  `vehicle_year` int(15) NOT NULL,
   `type` varchar(45) NOT NULL,
   `vehicle_payload` varchar(30) NOT NULL,
   `vehicle_status` varchar(35) NOT NULL,
@@ -272,7 +335,8 @@ CREATE TABLE `vendor` (
 --
 
 INSERT INTO `vendor` (`vendor_id`, `id_user`, `business_field_id`, `category_id`, `office_id`, `vendor_name`, `vendor_desc`, `founding_date`, `address`, `postcode`, `vendor_email`, `vendor_phone`, `vendor_fax`, `vendor_website`, `vendor_status`) VALUES
-('VENDOR260920200001', 'USER260920200001', 4, 8, '', 'PT. Jomblo', 'asd', 2020, 'asd', 40552, 'jomblo@sigle.com', '0228712498134', '2342462', 'www.jomblo.com', 1);
+('VENDOR280920200001', 'USER260920200001', 4, 3, '', 'PT. Jomblo', 'asd', 2020, 'asd', 40552, 'rizkyghani16@gmail.com', '0228712498134', '2342462', 'www.jomblo.com', 2),
+('VENDOR290920200002', 'USER290920200001', 11, 20, '', 'PT. Contoh', 'contoh', 2000, 'Jakarta', 40552, 'trdwinasty@gmail.com', '0228712498134', '2342462', 'www.poslogistics.co.id', 1);
 
 --
 -- Indexes for dumped tables
@@ -308,6 +372,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `document`
   ADD PRIMARY KEY (`doc_id`);
+
+--
+-- Indexes for table `form`
+--
+ALTER TABLE `form`
+  ADD PRIMARY KEY (`form_id`);
 
 --
 -- Indexes for table `general`
@@ -378,7 +448,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `document`
 --
 ALTER TABLE `document`
-  MODIFY `doc_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `doc_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `form`
+--
+ALTER TABLE `form`
+  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `general`
@@ -396,7 +472,7 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `log_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `vehicle`

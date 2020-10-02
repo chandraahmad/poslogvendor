@@ -16,11 +16,18 @@
                         <ion-label style="font-size: 15px;">{{ vAsset.asset_type }}</ion-label>
                     </ion-list-header>
                     <ion-item lines="full" *ngFor="let vVehile of Vehile">
-                        <ion-icon slot="end" color="vendorposlog" name="eye"></ion-icon>
                         <ion-icon slot="end" color="vendorposlog" name="trash" (click)="DeleteVehile(vVehile.vehicle_id)"></ion-icon>
                         <ion-label>
                             <h2 class="aset-font">Jenis Kendaraan : {{ vVehile.vehicle_type }}</h2>
                             <h2 class="aset-font">Merek : {{ vVehile.vehicle_brand }}</h2>
+                            <h2 class="aset-font">Status : {{ vVehile.vehicle_status }}</h2>
+                            <h2 class="aset-font">Service Terakhir : {{ vVehile.vehicle_history }}</h2>
+                        </ion-label>
+                        <ion-label>
+                            <h2 class="aset-font">Tahun : {{ vVehile.vehicle_year }}</h2>
+                            <h2 class="aset-font">Payload : {{ vVehile.vehicle_payload }}</h2>
+                            <h2 class="aset-font">Type : {{ vVehile.type }}</h2>
+                            <h2 class="aset-font">Qty : {{ vVehile.vehicle_qty }}</h2>
                         </ion-label>
                     </ion-item>
                     <ion-button expand="block" mode="ios" size="small" color="vendorposlog" (click)="VehicleForm()">Tambah Kendaraan</ion-button>

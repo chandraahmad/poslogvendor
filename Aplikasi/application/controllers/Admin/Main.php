@@ -472,8 +472,8 @@ class Main extends CI_Controller {
         $this->form_validation->set_rules('vendor_name','Nama Perusahaan','required');
  
 		if($this->form_validation->run() != false){
-                $doc_id = $this->input->post('doc_id');
-                $doc_type = $this->input->post('doc_type');
+                $vehicle_id = $this->input->post('vehicle_id');
+                $vehicle_type = $this->input->post('vehicle_type');
                 $vendor_name = $this->input->post('vendor_name');
                 
                 $log = array(
@@ -483,7 +483,7 @@ class Main extends CI_Controller {
                     'log_time' => date("Y-m-d H:i:s")
                 );
 
-            $this->db->query("DELETE FROM vehicle WHERE doc_id = '$doc_id'");
+            $this->db->query("DELETE FROM vehicle WHERE vehicle_id = '$vehicle_id'");
             $this->user_model->log($log,'log');
             redirect(base_url("index.php/admin/main/kendaraan_search"));
 		}else{

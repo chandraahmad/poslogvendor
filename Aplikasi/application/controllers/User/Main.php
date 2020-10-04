@@ -1630,18 +1630,31 @@ class Main extends CI_Controller {
 		}
     }
 
-    function hapus_kendaraan($vehicle_id){
-        $where = array('vehicle_id' => $vehicle_id);
-        $log = array(
-            'log_id' => "",
-            'id_user' => $this->session->userdata('id_user'),
-            'log_desc' => "User hapus data asset kendaraan",
-            'log_time' => date("Y-m-d H:i:s")
-        );
-        $this->user_model->log($log,'log');
-		$this->user_model->hapus_kendaraan($where,'vehicle');
-		redirect(base_url("index.php/user/main/kendaraan"));
-    }
+    public function hapus_kendaraan()
+    {
+        $this->form_validation->set_rules('vehicle_id','Vehicle ID','required');
+        $this->form_validation->set_rules('vehicle_type','Jenis Kendaraan','required');
+        $this->form_validation->set_rules('vendor_name','Nama Perusahaan','required');
+ 
+		if($this->form_validation->run() != false){
+                $vehicle_id = $this->input->post('vehicle_id');
+                $vehicle_type = $this->input->post('vehicle_type');
+                $vendor_name = $this->input->post('vendor_name');
+                
+                $log = array(
+                    'log_id' => "",
+                    'id_user' => $this->session->userdata('id_user'),
+                    'log_desc' => "User menghapus kendaraan $vehicle_type",
+                    'log_time' => date("Y-m-d H:i:s")
+                );
+
+            $this->db->query("DELETE FROM vehicle WHERE vehicle_id = '$vehicle_id'");
+            $this->user_model->log($log,'log');
+            redirect(base_url("index.php/user/main/kendaraan"));
+		}else{
+			redirect(base_url("index.php/user/main/kendaraan"));
+		}
+	}
     
     public function general()
 	{
@@ -1713,18 +1726,31 @@ class Main extends CI_Controller {
 		}
     }
 
-    function hapus_general($general_id){
-        $where = array('general_id' => $general_id);
-        $log = array(
-            'log_id' => "",
-            'id_user' => $this->session->userdata('id_user'),
-            'log_desc' => "User hapus data asset general",
-            'log_time' => date("Y-m-d H:i:s")
-        );
-        $this->user_model->log($log,'log');
-		$this->user_model->hapus_kendaraan($where,'general');
-		redirect(base_url("index.php/user/main/general"));
-    }
+    public function hapus_general()
+    {
+        $this->form_validation->set_rules('general_id','General ID','required');
+        $this->form_validation->set_rules('general_type','Jenis General','required');
+        $this->form_validation->set_rules('vendor_name','Nama Perusahaan','required');
+ 
+		if($this->form_validation->run() != false){
+                $general_id = $this->input->post('general_id');
+                $general_type = $this->input->post('general_type');
+                $vendor_name = $this->input->post('vendor_name');
+                
+                $log = array(
+                    'log_id' => "",
+                    'id_user' => $this->session->userdata('id_user'),
+                    'log_desc' => "User menghapus asset $general_type",
+                    'log_time' => date("Y-m-d H:i:s")
+                );
+
+            $this->db->query("DELETE FROM general WHERE general_id = '$general_id'");
+            $this->user_model->log($log,'log');
+            redirect(base_url("index.php/user/main/general"));
+		}else{
+			redirect(base_url("index.php/user/main/general"));
+		}
+	}
     
     public function awards()
 	{
@@ -1841,22 +1867,33 @@ class Main extends CI_Controller {
         echo json_encode($output);
     }
 
-    public function hapus_awards($awards_id){
-        $file = $this->db->query("SELECT awards_file FROM awards WHERE awards_id = '$awards_id'")->row_array();
-		$f = $file['awards_file'];
-        unlink("./assets/awards/$f");
-        
-        $where = array('awards_id' => $awards_id);
-        $log = array(
-            'log_id' => "",
-            'id_user' => $this->session->userdata('id_user'),
-            'log_desc' => "User hapus data sertifikasi/penghargaan",
-            'log_time' => date("Y-m-d H:i:s")
-        );
-        $this->user_model->log($log,'log');
-		$this->user_model->hapus_kendaraan($where,'awards');
-		redirect(base_url("index.php/user/main/awards"));
-    }
+    public function hapus_awards()
+    {
+        $this->form_validation->set_rules('awards_id','Awards ID','required');
+        $this->form_validation->set_rules('awards_type','Jenis Awards','required');
+        $this->form_validation->set_rules('vendor_name','Nama Perusahaan','required');
+ 
+		if($this->form_validation->run() != false){
+                $awards_id = $this->input->post('awards_id');
+                $awards_type = $this->input->post('awards_type');
+                $vendor_name = $this->input->post('vendor_name');
+                $awards_file = $this->input->post('awards_file');
+                
+                $log = array(
+                    'log_id' => "",
+                    'id_user' => $this->session->userdata('id_user'),
+                    'log_desc' => "User menghapus sertifikat/penghargaan $awards_type",
+                    'log_time' => date("Y-m-d H:i:s")
+                );
+
+            unlink("./assets/awards/$awards_file");
+            $this->db->query("DELETE FROM awards WHERE awards_id = '$awards_id'");
+            $this->user_model->log($log,'log');
+            redirect(base_url("index.php/user/main/awards"));
+		}else{
+			redirect(base_url("index.php/user/main/awards"));
+		}
+	}
 
     public function user()
     {

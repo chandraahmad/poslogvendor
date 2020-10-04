@@ -45,7 +45,7 @@
                       <td><?php echo $general_type;?></td>
                       <td><?php echo $general_qty;?></td>
                       <td><?php echo $general_status;?></td>
-                      <td class="text-center"><a data-toggle="modal" data-target="#modal_edit<?php echo $general_id; ?>" style="color: white;" class="btn btn-sm btn-warning btn-flat"><i class="fas fa-edit"></i> Edit</a> <a href="<?= base_url('index.php/user/main/hapus_general/' . $general_id); ?>" style="color: white;" class="btn btn-sm btn-info btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a></td>
+                      <td class="text-center"><a data-toggle="modal" data-target="#modal_edit<?php echo $general_id; ?>" style="color: white;" class="btn btn-sm btn-warning btn-flat"><i class="fas fa-edit"></i> Edit</a> <a data-toggle="modal" data-target="#modal_hapus<?php echo $general_id; ?>" style="color: white;" class="btn btn-sm btn-info btn-danger"><i class="fas fa-trash-alt"></i> Hapus</a></td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>
@@ -141,6 +141,44 @@
  
     <?php endforeach;?>
     <!--END MODAL EDIT-->
+
+    <!-- ============ MODAL HAPUS =============== -->
+    <?php
+        foreach($general->result_array() as $i):
+            $general_id=$i['general_id'];
+            $vendor_id=$i['vendor_id'];
+            $vendor_name=$i['vendor_name'];
+            $general_type=$i['general_type'];
+            $general_qty=$i['general_qty'];
+            $general_status=$i['general_status'];
+        ?>
+        <div class="modal fade" id="modal_hapus<?php echo $general_id;?>" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal_hapus">Persetujuan</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            </div>
+            <form action="<?php echo base_url(). 'index.php/user/main/hapus_general'; ?>" method="post">
+                <div class="modal-body">
+
+                <input type="text" class="form-control" id="general_id" name="general_id" value="<?php echo $general_id;?>" hidden="true">
+                <input type="text" class="form-control" id="general_type" name="general_type" value="<?php echo $general_type;?>" hidden="true">
+                <input type="text" class="form-control" id="vendor_name" name="vendor_name" value="<?php echo $vendor_name;?>" hidden="true">
+                <h6 class="font-weight-bold">Apakah anda yakin menghapus asset <?php echo $general_type;?> ?</h6>
+                </div>
+ 
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Tidak</button>
+                    <button class="btn btn-info">Yakin</button>
+                </div>
+            </form>
+            </div>
+            </div>
+        </div>
+ 
+    <?php endforeach;?>
+    <!--END MODAL HAPUS-->
 
     
 
